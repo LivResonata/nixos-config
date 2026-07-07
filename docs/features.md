@@ -7,16 +7,16 @@ These are modular components that can be added to any hosts or users.
 > 
 > However, a modular design is retained with Flake Parts and Import-tree as per its primary goal.
 >
-> Refer to [Inspiration and Limitations](<../README.md#Inspiration and Limitations>) for more information.
+> Refer to [Inspiration and Limitations](<../README.md#Inspiration-and-Limitations>) for more information.
 
 ## Table of Contents
 
-- [Adding Modules](<./features.md#Adding Modules>)
-  - [1. flake.nix](<./features.md#1. flake.nix>)
-  - [2. NixOS Host Configuration](<./features.md#2. NixOS Host Configuration>)
-  - [3. Users via Home Manager](<./features.md#Users via Home Manager>)
-- [Editing Options](<./features.md#Editing Options>)
-- [List of Feature Modules](<./features.md#List of Feature Modules>) 
+- [Adding Modules](<./features.md#Adding-Modules>)
+  - [1. flake.nix](<./features.md#1-flakenix>)
+  - [2. NixOS Host Configuration](<./features.md#2-NixOS-Host-Configuration>)
+  - [3. Users via Home Manager](<./features.md#3-Users-via-Home-Manager>)
+- [Editing Options](<./features.md#Editing-Options>)
+- [List of Feature Modules](<./features.md#List-of-Feature-Modules>) 
 
 ## Adding Modules
 
@@ -48,7 +48,7 @@ Any modules inside `./modules` will be imported automatically.
 
 ### 2. NixOS Host Configuration
 
-Utilizes `flake.nixosConfiguratoins.<hostname>`. Includes `withSystem` for access to `packages` as noted in [Overlays in Packages](<../README.md#Overlays and Packages>).
+Utilizes `flake.nixosConfiguratoins.<hostname>`. Includes `withSystem` for access to `packages` as noted in [Overlays in Packages](<../README.md#Overlays-and-Packages>).
 
 Of course, substitute `<hostname>` with your PC's hostname and `<username>` with your username.
 
@@ -92,7 +92,7 @@ Of course, substitute `<hostname>` with your PC's hostname and `<username>` with
 
 ### 3. Users via Home Manager
 
-Instead of using `flake.homeConfigurations.<username>`, `flake.homeModules.<username>` is used instead. The user module is loaded in a [NixOS Host Configuration](<./features.md#2. NixOS Host Configuration>) of the same username first.
+Instead of using `flake.homeConfigurations.<username>`, `flake.homeModules.<username>` is used instead. The user module is loaded in a [NixOS Host Configuration](<./features.md#2-nixos-host-configuration>) of the same username first.
 
 > [!Note]
 > I've yet to understand how to properly use the `flake.homeConfigurations.\<username\> configuration.
@@ -162,7 +162,7 @@ Some modules provide options to customize a host or user's configuration outside
 
 But for those that don't have options, the use of `lib.mkForce` or directly editing the feature modules are the two currently available methods that can override, overwrite, or add new options.
 
-To know if a feature module have options and what it has, it is required to inspect each file manually as there is no documentation for it at the moment. However, the [List of Feature Modules](<./features.md#List of Feature Modules>) can offer as a guide on which files to check via its **Has Options** column.
+To know if a feature module have options and what it has, it is required to inspect each file manually as there is no documentation for it at the moment. However, the [List of Feature Modules](<./features.md#List-of-Feature-Modules>) can offer as a guide on which files to check via its **Has Options** column.
 
 ## List of Feature Modules
 
