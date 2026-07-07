@@ -6,13 +6,13 @@ This is an overhaul of my private configuration from using NixOS the first time 
 
 ## Table of Contents
 
-- [Inspiration and Limitations](<README.md#Inspiration and Limitations>)
+- [Inspiration and Limitations](<README.md#Inspiration-and-Limitations>)
 - [Hosts](<README.md#Hosts>)
 - [Features](<README.md#Features>)
-- [Overlays and Packages](<README.md#Overlays and Packages>)
-- [Secrets and Sensitives](<README.md#Secrets and Sensitives>)
+- [Overlays and Packages](<README.md#Overlays-and-Packages>)
+- [Secrets and Sensitives](<README.md#Secrets-and-Sensitives>)
   - [Terminology](<README.md#Terminology>)
-  - [Affected Files and Code](<README.md#Affected Files and Code>)
+  - [Affected Files and Code](<README.md#Affected-Files-and-Code>)
 - [Goals](<README.md#Goals>)
 - [Credits](<README.md#Credits>)
 
