@@ -1,0 +1,26 @@
+{
+  "prettier": {
+    "allowed": false,
+    "parser": ""
+  },
+  "languages": {
+    "Nix": {
+      "prettier": {
+        "allowed": false
+      },
+      "completions": {
+        "lsp": true
+      },
+      "enable_language_server": true,
+      "use_on_type_format": true,
+      "line_ending": "detect",
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true,
+      "preferred_line_length": 80,
+      "auto_indent": "syntax_aware",
+      "hard_tabs": false,
+      "tab_size": 2,
+      "format_on_save": "on"
+    }
+  }
+}

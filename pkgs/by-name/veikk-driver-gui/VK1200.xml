@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configure version="3">
+  <Pen>
+    <Hotkey app="true">
+      <Button id="1">
+        <Action type="keyboard" tip="Space" mode="hotkey">Space</Action>
+      </Button>
+      <Button id="2">
+        <Action type="mouse" event="3" tip="Right Click"/>
+      </Button>
+    </Hotkey>
+    <Curve enable="true" param="0.000,0.125,0.125,1.000"/>
+    <Pointer relative="false" step="5" capacity="0" gamesupport="false" ink="true"/>
+  </Pen>
+  <Tablet model="VK1200" pid="0x1005" vid="0x2feb">
+    <Hotkey feature="key" app="true" dial-sensitivity="true">
+      <Key id="1" virtual="false">
+        <Action type="keyboard" tip="Redo (Ctrl+Shift+Z)" mode="hotkey">Ctrl+Shift+Z</Action>
+      </Key>
+      <Key id="2" virtual="false">
+        <Action type="keyboard" tip="Undo (Ctrl+Z)" mode="hotkey">Ctrl+Z</Action>
+      </Key>
+      <Key id="3" virtual="false">
+        <Action type="keyboard" tip="Eye Dropper (Ctrl)" mode="hotkey">Ctrl</Action>
+      </Key>
+      <Key id="4" virtual="false">
+        <Action type="keyboard" tip="Hand (Space)" mode="hotkey">Space</Action>
+      </Key>
+      <Key id="5" virtual="false">
+        <Action type="keyboard" tip="Zoom In (+)" mode="text">+</Action>
+      </Key>
+      <Key id="6" virtual="false">
+        <Action type="keyboard" tip="Zoom Out (-)" mode="hotkey">-</Action>
+      </Key>
+    </Hotkey>
+    <Mapping>
+      <Screen kcx="1.00313" kcy="1.01667" index="0" kx="0.99740" part="0,0,1920,1080" ky="1.00289">
+        <Identify code="56-4b-4b-31-31-36-30" id="0" flag="0"/>
+        <Addition absrect="0,0,1920,1080" dpirect="0,0,0,0" desktopsize="1920,1080" dpidesktopsize="0,0"/>
+      </Screen>
+      <Work rotation="0" part="0,0,100,100"/>
+    </Mapping>
+  </Tablet>
+</Configure>
