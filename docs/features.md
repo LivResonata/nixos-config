@@ -95,7 +95,7 @@ Of course, substitute `<hostname>` with your PC's hostname and `<username>` with
 Instead of using `flake.homeConfigurations.<username>`, `flake.homeModules.<username>` is used instead. The user module is loaded in a [NixOS Host Configuration](<./features.md#2-nixos-host-configuration>) of the same username first.
 
 > [!Note]
-> I've yet to understand how to properly use the `flake.homeConfigurations.\<username\> configuration.
+> I've yet to understand how to properly use the `flake.homeConfigurations.<username>` configuration.
 
 Of course, substitute `<username>` with your username.
 

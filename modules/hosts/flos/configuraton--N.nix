@@ -107,6 +107,11 @@
       # Unsure if this should be host-centric or modular in "./modules/features".
       sops = {
         defaultSopsFile = "${sensitivesSecretsPath}/secrets.yaml";
+
+        # The option documentation in `sops-nix` says:
+        # Check all sops files at evaluation time. This requires sops files to be added to the nix store.
+        ## The guide by Emergent Mind has it set to `false`. The default is `true`.
+        ### Unsure what's the practical difference yet other than possibly avoiding the nix store.
         validateSopsFiles = false;
 
         age = {
@@ -117,6 +122,7 @@
 
         secrets = {
           # Outputs to /run/secrets-for-users
+          ## Enabling this option causes the secret to be decrypted before users and groups are created.
           password-livresonata = {
             neededForUsers = true;
           };
