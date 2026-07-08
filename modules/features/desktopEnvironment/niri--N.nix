@@ -118,7 +118,6 @@
             qtwayland
             kcolorscheme
             ffmpegthumbs
-            # kconfigwidgets
             qtimageformats
             dolphin-plugins
             pkgs.ffmpegthumbnailer
@@ -127,7 +126,6 @@
             ### See: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/desktop-managers/plasma6.nix
             #### Frameworks with globally loadable bits
             frameworkintegration # provides Qt plugin
-            kded # provides helper service
             qtimageformats # provides optional image formats such as .webp and .avif
             kio # provides helper service + a bunch of other stuff
             kio-admin # managing files as admin
