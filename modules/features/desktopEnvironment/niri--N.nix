@@ -87,6 +87,12 @@
             ### Screen Recording
             gpu-screen-recorder
             gpu-screen-recorder-gtk
+
+            ### Smart Auto Hide Bar
+            #### May be added to Noctalia Shell v5 after triage.
+            #### See: https://www.reddit.com/r/niri/s/5zWuwpvbcT
+            ####      https://github.com/StrixROX/dotfiles-niri/blob/main/noctalia/scripts/smart-auto-hide-bar.sh
+            jq
           ])
 
           (with pkgs.kdePackages; [
@@ -118,7 +124,6 @@
             qtwayland
             kcolorscheme
             ffmpegthumbs
-            # kconfigwidgets
             qtimageformats
             dolphin-plugins
             pkgs.ffmpegthumbnailer
@@ -127,7 +132,6 @@
             ### See: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/desktop-managers/plasma6.nix
             #### Frameworks with globally loadable bits
             frameworkintegration # provides Qt plugin
-            kded # provides helper service
             qtimageformats # provides optional image formats such as .webp and .avif
             kio # provides helper service + a bunch of other stuff
             kio-admin # managing files as admin
