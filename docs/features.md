@@ -179,7 +179,7 @@ Filename syntax: `moduleFeatureName--HN.nix`
 | spatializerVirtSurround | ./audio/spatializerVirtSurround | &check; |         | &check; | Pipewire virtual surround via SADIE KU-100 spatializer. |
 | niri                    | ./desktopEnvironment            | &check; |         |         | Niri with Noctalia Shell. |
 | plasma                  | ./desktopEnvironment            | &check; |         |         | KDE Plasma with Plasma Login Manager. |
-| amdgpu                  | ./hardware                      | &check; |         |         | AMDGPU graphic defaults and PPFeatureMask safeties. |
+| amdgpu                  | ./hardware                      | &check; |         | &check; | AMDGPU graphic defaults and PPFeatureMask safeties. |
 | theming                 | ./theming                       |         | &check; |         | Cursor, font options, icon packs, and Stylix options. |
 | themingPresets          | ./theming                       |         | &check; | &check; | Contains custom preset themes for Stylix. |
 | antivirus               |   | &check; |         |         | ClamAV daemon without auto-scanning. |

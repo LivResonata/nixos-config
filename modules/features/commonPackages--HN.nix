@@ -94,19 +94,11 @@
           # FHS-compliant Launcher
           steam-run
         ]
-        ++
-          lib.optionals
-            (lib.lists.any (
-              sysmon:
-              lib.strings.hasInfix "pkgs.btop-rocm" "pkgs.btop-cuda" "pkgs.nvtopPackages.amd"
-                "pkgs.nvtopPackages.intel"
-                "pkgs.nvtopPackages.nvidia"
-                sysmon
-            ) config.environment.systemPackages)
-            [
-              # TUI System Monitoring
-              btop
-              nvtop
-            ];
+        # Add more GPU conditionals if more are added in `./hardware`.
+        ++ lib.optionals (!config.hardware.amdgpu.enable) [
+          # TUI System Monitoring
+          btop
+          nvtop
+        ];
     };
 }
