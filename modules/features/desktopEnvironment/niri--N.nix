@@ -87,6 +87,12 @@
             ### Screen Recording
             gpu-screen-recorder
             gpu-screen-recorder-gtk
+
+            ### Smart Auto Hide Bar
+            #### May be added to Noctalia Shell v5 after triage.
+            #### See: https://www.reddit.com/r/niri/s/5zWuwpvbcT
+            ####      https://github.com/StrixROX/dotfiles-niri/blob/main/noctalia/scripts/smart-auto-hide-bar.sh
+            jq
           ])
 
           (with pkgs.kdePackages; [

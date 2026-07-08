@@ -47,54 +47,66 @@
     };
 
   flake.nixosModules.commonPackages =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
-      environment.systemPackages = with pkgs; [
-        # Wayland
-        wl-clipboard
-        wayland-utils
+      environment.systemPackages =
+        with pkgs;
+        [
+          # Wayland
+          wl-clipboard
+          wayland-utils
 
-        # Archival Utilities
-        zip
-        lzip
-        pzip
-        p7zip
-        unrar
-        unzip
+          # Archival Utilities
+          zip
+          lzip
+          pzip
+          p7zip
+          unrar
+          unzip
 
-        # CLI Binaries
-        dig
-        fzf
-        sops
-        whois
-        rclone
-        psmisc
-        ddcutil
-        usbutils
-        pciutils
-        fastfetch
-        inetutils
-        alsa-utils
-        lm_sensors
-        traceroute
-        vulkan-tools
-        android-tools
-        smartmontools
+          # CLI Binaries
+          dig
+          fzf
+          sops
+          whois
+          rclone
+          psmisc
+          ddcutil
+          usbutils
+          pciutils
+          fastfetch
+          inetutils
+          alsa-utils
+          lm_sensors
+          traceroute
+          vulkan-tools
+          android-tools
+          smartmontools
 
-        # Libraries
-        libnotify
-        libva-utils
+          # Libraries
+          libnotify
+          libva-utils
 
-        # TUI System Monitoring
-        btop-rocm
-        nvtopPackages.amd
+          # Utilities
+          kdePackages.filelight
+          kdePackages.partitionmanager
 
-        # Utilities
-        kdePackages.filelight
-        kdePackages.partitionmanager
-
-        # FHS-compliant Launcher
-        steam-run
-      ];
+          # FHS-compliant Launcher
+          steam-run
+        ]
+        ++
+          lib.optionals
+            (lib.lists.any (
+              sysmon:
+              lib.strings.hasInfix "pkgs.btop-rocm" "pkgs.btop-cuda" "pkgs.nvtopPackages.amd"
+                "pkgs.nvtopPackages.intel"
+                "pkgs.nvtopPackages.nvidia"
+                sysmon
+            ) config.environment.systemPackages)
+            [
+              # TUI System Monitoring
+              btop
+              nvtop
+            ];
     };
 }

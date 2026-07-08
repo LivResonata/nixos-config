@@ -66,7 +66,12 @@
       };
 
       environment = {
-        systemPackages = with pkgs; [ amdgpu_top ];
+        systemPackages = with pkgs; [
+          # TUI System Monitoring
+          btop-rocm
+          amdgpu_top
+          nvtopPackages.amd
+        ];
 
         sessionVariables = {
           # AMD RADV Vulkan
