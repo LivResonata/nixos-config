@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/qoomon/git-conventional-commits
+    rev: v2.9.0
+    hooks:
+      - id: conventional-commits
