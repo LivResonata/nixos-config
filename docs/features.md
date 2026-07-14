@@ -192,7 +192,7 @@ Filename syntax: `moduleFeatureName--HN.nix`
 | flatpak                 |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
 | fonts                   |   | &check; |         |         | Contains font packages and options outside theming modules. |
 | gaming                  |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
-| git                     |   | &check; | &check; |         | Enables Git. (*That's it.*) |
+| git                     |   | &check; | &check; |         | Enables Git and repository management utilities. |
 | graphics                |   |         | &check; |         | Contains packages for graphic design and art. |
 | inputMethod             |   |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
 | performance             |   | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |

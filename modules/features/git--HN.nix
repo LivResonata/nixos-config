@@ -27,6 +27,11 @@
           enable = true;
           package = pkgs.gitFull;
         };
+
+        git-credential-oauth = {
+          enable = true;
+          package = pkgs.git-credential-oauth;
+        };
       };
     };
 }
