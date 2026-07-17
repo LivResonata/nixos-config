@@ -106,9 +106,8 @@
             gwenview # Image viewer
 
             ### Screenshot
-            #### As closest to spectacle— isn't compatible outside KDE Plasma.
-            #### Niri and Noctalia Shell also provide their own screenshot system, if preferred.
-            pkgs.grim
+            #### As closest to Spectacle— isn't compatible outside KDE Plasma.
+            #### Niri and Noctalia Shell also provide their own screenshot system. Latter is preferred.
             pkgs.satty
 
             ### Utilities
@@ -137,6 +136,7 @@
             kio-admin # managing files as admin
             kio-extras # stuff for MTP, AFC, etc
             kio-fuse # fuse interface for KIO
+            solid # provides solid-hardware6 tool
 
             #### Core Plasma Parts
             kdegraphics-thumbnailers # pdf etc thumbnailer
@@ -195,6 +195,14 @@
             };
           };
         };
+
+        udev = {
+          packages = with pkgs; [
+            libmtp.out
+            media-player-info
+          ];
+        };
+
       };
 
       xdg = {
