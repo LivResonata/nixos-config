@@ -88,11 +88,11 @@
             gpu-screen-recorder
             gpu-screen-recorder-gtk
 
-            ### Smart Auto Hide Bar
-            #### May be added to Noctalia Shell v5 after triage.
-            #### See: https://www.reddit.com/r/niri/s/5zWuwpvbcT
-            ####      https://github.com/StrixROX/dotfiles-niri/blob/main/noctalia/scripts/smart-auto-hide-bar.sh
-            jq
+            ### Plugin Dependencies
+            #### Official
+            mpvpaper # Video Wallpaper
+            #### Community
+            hyprpicker # Color Picker by oldirtty
           ])
 
           (with pkgs.kdePackages; [
@@ -115,7 +115,6 @@
             kcalc # Calculator
             dolphin # File Manager
             filelight # Disk Space Visualizer
-            plasma-systemmonitor # System Monitor
 
             ### Additional functionalities and plugins
             qtsvg
