@@ -45,7 +45,7 @@
               DNSOverHTTPS = {
                 Enabled = true;
                 ProviderURL = sensitivesSecretsData.networking.${osConfig.networking.hostName}.dns.zen-browser;
-                Locked = false;
+                Locked = false; # In case of DNS-over-HTTPS failures, an imperative switch is preferable.
               };
 
               # Syntax: `"extension-id" = "extension-name"`

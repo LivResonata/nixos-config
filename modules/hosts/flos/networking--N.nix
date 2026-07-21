@@ -139,7 +139,7 @@
             MulticastDNS = true;
 
             DNS = sensitivesSecretsData.networking.${config.networking.hostName}.dns.systemd-resolved;
-            FallbackDNS = "2606:4700:4700::1111#cloudflare-dns.com 2606:4700:4700::1001#cloudflare-dns.com 1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com";
+            FallbackDNS = "94.140.14.15#family.adguard-dns.com 94.140.15.16#family.adguard-dns.com 2a10:50c0::bad1:ff#family.adguard-dns.com 2a10:50c0::bad2:ff#family.adguard-dns.com";
           };
         };
       };
