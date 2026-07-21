@@ -20,7 +20,6 @@
           {
             # Additional parameters
             ## - https://github.com/NixOS/nixpkgs/pull/292147#issuecomment-2343586641
-            ## - https://wiki.nixos.org/wiki/Vivaldi#Force_use_of_password_store_(KWlallet,_GNOME_Keyring)
             enableWidevine = true;
             proprietaryCodecs = true;
           }

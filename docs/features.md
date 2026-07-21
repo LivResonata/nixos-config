@@ -17,6 +17,8 @@ These are modular components that can be added to any hosts or users.
   - [3. Users via Home Manager](<./features.md#3-Users-via-Home-Manager>)
 - [Editing Options](<./features.md#Editing-Options>)
 - [List of Feature Modules](<./features.md#List-of-Feature-Modules>) 
+  - [Importables](<./features.md#Importables>)
+  - [Sub-modules](<./features.md#Sub-modules>)
 
 ## Adding Modules
 
@@ -166,37 +168,48 @@ To know if a feature module have options and what it has, it is required to insp
 
 ## List of Feature Modules
 
-Module filenames are appended with either `H` and `N` for denoting Home Manager and NixOS module presence respectively. Likewise, the files and modules should be the same in-name.
+Module filenames are appended with either `H` or `N` for denoting Home Manager and NixOS module presence respectively. Likewise, the files and modules should be the same in-name.
 
-Written in order of alphabetical sorting with folders first in `../modules/`.
+Written in order of alphabetical sorting with folders first in `../modules/features`.
 
 Filename syntax: `moduleFeatureName--HN.nix`
 
-| Module Name             | Folder | NixOS | Home Manager | Has Options | Description |
-| ----------------------- | ------ | ----- | ------------ | ----------- | ----------- |
-| audio                   | ./audio                         | &check; |         |         | Pipewire, Quantum, and VirtSurround. | 
-| quantum                 | ./audio                         | &check; |         |         | Pipewire quantum parameters. |
-| spatializerVirtSurround | ./audio/spatializerVirtSurround | &check; |         | &check; | Pipewire virtual surround via SADIE KU-100 spatializer. |
-| niri                    | ./desktopEnvironment            | &check; |         |         | Niri with Noctalia Shell. |
-| plasma                  | ./desktopEnvironment            | &check; |         |         | KDE Plasma with Plasma Login Manager. |
-| amdgpu                  | ./hardware                      | &check; |         | &check; | AMDGPU graphic defaults and PPFeatureMask safeties. |
-| theming                 | ./theming                       |         | &check; |         | Cursor, font options, icon packs, and Stylix options. |
-| themingPresets          | ./theming                       |         | &check; | &check; | Contains custom preset themes for Stylix. |
-| antivirus               |   | &check; |         |         | ClamAV daemon without auto-scanning. |
-| browsers                |   |         | &check; |         | Contains web browsers. |
-| commonPrograms          |   | &check; | &check; |         | Non-categorized program set. |
-| commonPackages          |   | &check; | &check; |         | Non-categorized package set. |
-| commonServices          |   | &check; | &check; |         | Non-categorized service set. |
-| drawingTablet           |   | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
-| editor                  |   | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
-| flatpak                 |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
-| fonts                   |   | &check; |         |         | Contains font packages and options outside theming modules. |
-| gaming                  |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
-| git                     |   | &check; | &check; |         | Enables Git and repository management utilities. |
-| graphics                |   |         | &check; |         | Contains packages for graphic design and art. |
-| inputMethod             |   |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
-| performance             |   | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
-| samba                   |   | &check; |         |         | Contains Samba Share settings and user `guest`. |
-| shell                   |   | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
-| ssh                     |   | &check; | &check; |         | Contains SSH configurations. |
-| virtualisation          |   | &check; |         |         | Contains Docker, Virt-Manager, and Waydroid setups. |
+### Importables
+
+These are modules that are expected to be added to per-host and per-user configurations. Those in folders can be parent modules which have their own automatically imported sub-modules.
+
+| Module Name    | Has sub-modules | Folder | NixOS | Home Manager | Has Options | Description |
+| ---------------| --------------- | ------ | ----- | ------------ | ----------- | ----------- |
+| audio          | &check; | ./audio              | &check; |         |         | Pipewire, Quantum, and VirtSurround. | 
+| niri           |         | ./desktopEnvironment | &check; |         |         | Niri with Noctalia Shell. |
+| plasma         |         | ./desktopEnvironment | &check; |         |         | KDE Plasma with Plasma Login Manager. |
+| amdgpu         |         | ./hardware           | &check; |         | &check; | AMDGPU graphic defaults and PPFeatureMask safeties. |
+| theming        | &check; | ./theming            |         | &check; |         | Cursor, font options, icon packs, and Stylix options. |
+| antivirus      | |   | &check; |         |         | ClamAV daemon without auto-scanning. |
+| browsers       | |   |         | &check; |         | Contains web browsers. |
+| commonPrograms | |   | &check; | &check; |         | Non-categorized program set. |
+| commonPackages | |   | &check; | &check; |         | Non-categorized package set. |
+| commonServices | |   | &check; | &check; |         | Non-categorized service set. |
+| drawingTablet  | |   | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
+| editor         | |   | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
+| flatpak        | |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
+| fonts          | |   | &check; |         |         | Contains font packages and options outside theming modules. |
+| gaming         | |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
+| git            | |   | &check; | &check; |         | Enables Git and repository management utilities. |
+| graphics       | |   |         | &check; |         | Contains packages for graphic design and art. |
+| inputMethod    | |   |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
+| performance    | |   | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
+| samba          | |   | &check; |         |         | Contains Samba Share settings and user `guest`. |
+| shell          | |   | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
+| ssh            | |   | &check; | &check; |         | Contains SSH configurations. |
+| virtualisation | |   | &check; |         |         | Contains Docker, Virt-Manager, and Waydroid setups. |
+
+### Sub-modules
+
+These are *not* made to be added to configurations. However, these are auto-imported by its parent Importable module inside the same folder as itself. This helps in preventing one long monolithic module.
+
+| Module Name    | Parent Module | Folder               | NixOS   | Home Manager | Has Options | Description |
+| ---------------| ------------- | -------------------- | --------| ------------ | ----------- | ----------- |
+| quantum        | audio         | ./audio              | &check; |         |         | Pipewire quantum parameters. |
+| virtSurround   | audio         | ./audio/virtSurround | &check; |         | &check; | Pipewire virtual surround via SADIE KU-100 spatializer. |
+| themingPresets | theming       | ./theming            |         | &check; | &check; | Contains custom preset themes for Stylix. |

@@ -60,6 +60,7 @@
 
         {
           # Required to detect the pen regardless of platform choice.
+          ## TODO: Might move to per-host hardware configuration.
           services.udev.packages = with packages; [
             veikk-driver-gui # VEIKK 1200
           ];

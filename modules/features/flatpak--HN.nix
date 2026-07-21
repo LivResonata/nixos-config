@@ -25,7 +25,6 @@
     in
     {
       options.services.flatpak = {
-        # Generated with Proton's Lumo AI. Hoping to understand this as I continue learning Nix.
         extraCategories = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           default = [ ];

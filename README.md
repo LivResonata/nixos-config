@@ -18,7 +18,7 @@ This is an overhaul of my private configuration from using NixOS the first time 
 
 ## Inspiration and Limitations
 
-This project is inspired by [The Dendritic Pattern](https://github.com/mightyiam/dendritic) by **mightyjam**.
+This project is inspired by [The Dendritic Pattern](https://github.com/mightyiam/dendritic) by **mightyjam** and **[Vimjoyer](https://www.youtube.com/@vimjoyer)**'s coverage of it.
 
 > [!Warning]
 >As noted in the pattern guide, this repository and its configuration may be or is affected by the [anti-patterns](https://github.com/mightyiam/dendritic#anti-patterns) of "*Not declaring options*", "*specialArgs pass-thru*". and "*Lower-level module name proliferation*".
@@ -94,18 +94,16 @@ The following code is used in NixOS Host Configurations to utilize `perSystem.pa
 >
 > Likewise, any options that utilize the input and program also have to be modified to work without it or made to your own use-case. 
 
-With the directory starting in `./modules`:
-
 | File | Type |
 | ---- | ---- |
-| ./features/flake.nix | Features |
-| ./features/browsers\--H.nix | Features |
-| ./features/flatpak\--HN.nix | Features |
-| ./hosts/flos/configuration\--N.nix | NixOS Host Configuration |
-| ./hosts/flos/networking\--N.nix | NixOS Host Modules |
-| ./users/livresonata\--HN.nix | User Setup Modules |
+| /flake.nix | Flake |
+| ./modules/features/browsers\--H.nix | Features |
+| ./modules/features/flatpak\--HN.nix | Features |
+| ./modules/hosts/flos/configuration\--N.nix | NixOS Host Configuration |
+| ./modules/hosts/flos/networking\--N.nix | NixOS Host Modules |
+| ./modules/users/livresonata\--HN.nix | User Setup Modules |
 
-And a reference of what code to look for to modify or remove:
+And here's a reference regarding what code to modify or remove:
 
 ```
 { config, ... }:
@@ -114,11 +112,11 @@ let
   sensitivesSecretsData = builtins.fromJSON (builtins.readFile "${sensitivesSecretsPath}/sensitives.json");
 in
 {
-  # For secrets
-  secretsExample = config.sops.secrets.<name>.path;
-
   # For sensitives
   sensitivesExample = sensitivesSecretsData.<name>.<sub-trees>;
+  
+  # For secrets
+  secretsExample = config.sops.secrets.<name>.path;
 }
 ```
 
@@ -139,6 +137,6 @@ These guides, people, and repositories helped and are still helping me understan
 - [dendritic-nixos](https://github.com/MATOO-Dev/dendritic-nixos) by **MATOO-Dev** on GitHub — Gave me my "*Eureka!*" moment which clicked many floating puzzle pieces in my mind on how to make the configuration work.
 - **[Emergent Mind](https://www.youtube.com/@Emergent_Mind)** on YouTube — For the tutorial and practices about [secrets management with sops-nix](https://youtu.be/6EMNHDOY-wo), a three-part video.
 
-And others behind-the-scenes that inspire and continue to keep me trying new stuff and understand it.
+And those behind-the-scenes that inspire and continue to keep me trying new stuff and understand it.
 
 There could be more such as the NixOS Documentation, package and option searches, but I've got approximately 81 browser tabs involving this project to comb through. I suppose not attempting to overwhelm the list is a good idea.
