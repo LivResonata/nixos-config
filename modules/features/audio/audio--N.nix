@@ -9,7 +9,7 @@
     {
       imports = with self.nixosModules; [
         pwQuantum
-        spatializerVirtSurround
+        virtSurround
       ];
 
       # Prevent audio device suspend.
