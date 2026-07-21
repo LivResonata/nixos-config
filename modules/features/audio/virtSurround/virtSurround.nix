@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.spatializerVirtSurround =
+  flake.nixosModules.virtSurround =
     { config, lib, ... }:
     let
       cfg = config.services.pipewire.virtSurround;
