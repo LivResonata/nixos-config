@@ -80,7 +80,7 @@
             enabledThemes =
               if osConfig.programs.niri.enable then
                 [
-                  "noctalia-material.theme.css"
+                  "noctalia.theme.css" # Midnight by refact0r
                 ]
               else
                 [ ];

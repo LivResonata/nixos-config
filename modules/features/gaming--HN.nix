@@ -92,7 +92,6 @@
           enable = true;
           extest.enable = true;
           protontricks.enable = false; # Use Flatpak version and implicitly add folder permissions.
-          gamescopeSession.enable = false; # Not sure if this runs every launch; optionally add implicitly instead.
           remotePlay.openFirewall = true; # Steam Remote Play
           dedicatedServer.openFirewall = true; # Source Dedicated Server
           localNetworkGameTransfers.openFirewall = true; # Steam Local Network Game Transfers
@@ -100,7 +99,6 @@
           extraCompatPackages = with pkgs; [
             proton-ge-bin
             packages.dwproton
-            steamtinkerlaunch
           ];
         };
       };
