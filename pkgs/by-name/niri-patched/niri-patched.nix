@@ -42,7 +42,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ];
 
   patches = [
-    ./shm-sharing.patch
+    ./1791-support-shm-sharing.patch
   ];
 
   postPatch = ''

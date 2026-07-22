@@ -1,7 +1,7 @@
 From 0cc70b9c8ed70e67f7cee8e79be9ad923e399901 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Sun, 31 Aug 2025 20:56:13 +0800
-Subject: [PATCH 01/19] pw_utils: create a struct called DmaNegotiationResult
+Subject: [PATCH 01/22] pw_utils: create a struct called DmaNegotiationResult
 
 ---
  src/screencasting/pw_utils.rs | 45 +++++++++++++++++++----------------
@@ -130,7 +130,7 @@ index ba10be3eb7..5e92e4dfca 100644
 From f14373a86250eef78dd9f89602082c0f9f19ed12 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Mon, 1 Sep 2025 16:30:43 +0800
-Subject: [PATCH 02/19] pw_utils: add comments about pw negotiating
+Subject: [PATCH 02/22] pw_utils: add comments about pw negotiating
 
 ---
  src/screencasting/pw_utils.rs | 16 ++++++++++++++++
@@ -167,7 +167,7 @@ index 5e92e4dfca..ee593def84 100644
 From f2e88706c27321bdf3cc301da3fa42dde4b18173 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Wed, 18 Feb 2026 03:53:40 +0800
-Subject: [PATCH 03/19] pw_utils: refactor modifier negotiation logic
+Subject: [PATCH 03/22] pw_utils: refactor modifier negotiation logic
 
 This commit is preparation for supporting shared memory sharing
 ---
@@ -632,7 +632,7 @@ index ee593def84..5bb8d7ba8a 100644
 From 5e62ee2ecf160b19b0d060b31d9b9551046456cd Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Wed, 18 Feb 2026 04:04:01 +0800
-Subject: [PATCH 04/19] pw_utils: change type of `extra_negotiation_result` to
+Subject: [PATCH 04/22] pw_utils: change type of `extra_negotiation_result` to
  `Option<DmaNegotiationResult>`
 
 This commit is preparation for supporting shared memory sharing
@@ -859,7 +859,7 @@ index 5bb8d7ba8a..484c150951 100644
 From 15bdc06124c89c1436861175afc170a62c60aaea Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 00:24:23 +0800
-Subject: [PATCH 05/19] pw_utils: add some comments about
+Subject: [PATCH 05/22] pw_utils: add some comments about
  `extra_negotiation_result`
 
 ---
@@ -883,7 +883,7 @@ index 484c150951..97178960a3 100644
 From 5fd760dd5cd0a60191cc0c43d4ae67224f9f113d Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Wed, 18 Feb 2026 04:14:15 +0800
-Subject: [PATCH 06/19] pw_utils: support sending SHM sharing as fallback when
+Subject: [PATCH 06/22] pw_utils: support sending SHM sharing as fallback when
  first negotiating
 
 ---
@@ -1251,7 +1251,7 @@ index 97178960a3..0ddd0ccf9a 100644
 From 44b7bf82dd69f8234c1104cd6f27ed9721f39301 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Wed, 18 Feb 2026 04:31:43 +0800
-Subject: [PATCH 07/19] pw_utils: support negotiating to SHM sharing after
+Subject: [PATCH 07/22] pw_utils: support negotiating to SHM sharing after
  connect
 
 ---
@@ -1580,7 +1580,7 @@ index 0ddd0ccf9a..2c3f6cd8dc 100644
 From b27fb3dae4049aceae3ad38f4ee83a8ca7c2ffae Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 03:04:27 +0800
-Subject: [PATCH 08/19] pw_utils: support add and remove shm buffer
+Subject: [PATCH 08/22] pw_utils: support add and remove shm buffer
 
 ---
  src/screencasting/pw_utils.rs | 84 ++++++++++++++++++++++++++++++++---
@@ -1728,7 +1728,7 @@ index 2c3f6cd8dc..7e471e08e2 100644
 From 7c6e22320776a41222624cccc1e1eca355541b7a Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Wed, 29 Apr 2026 20:26:45 +0800
-Subject: [PATCH 09/19] pw_utils: refactor `dequeue_buffer_and_render`
+Subject: [PATCH 09/22] pw_utils: refactor `dequeue_buffer_and_render`
 
 ---
  src/screencasting/pw_utils.rs | 173 +++++++++++++++++-----------------
@@ -1938,7 +1938,7 @@ index 7e471e08e2..f6b38b668f 100644
 From 820be27eab88b042d94f850955df8f15afb62c4f Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Wed, 29 Apr 2026 20:43:11 +0800
-Subject: [PATCH 10/19] pw_utils: support render to shm buffer
+Subject: [PATCH 10/22] pw_utils: support render to shm buffer
 
 ---
  src/screencasting/pw_utils.rs | 98 +++++++++++++++++++++++++++++------
@@ -2092,7 +2092,7 @@ index f6b38b668f..88565a4dda 100644
 From 80cd9b0ee90de60b53a75ccb0eb9157ea82e8528 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 04:14:39 +0800
-Subject: [PATCH 11/19] pw_utils: support clean shm buffer
+Subject: [PATCH 11/22] pw_utils: support clean shm buffer
 
 ---
  src/screencasting/pw_utils.rs | 85 ++++++++++++++++++++++++++++-------
@@ -2208,7 +2208,7 @@ index 88565a4dda..91df46d407 100644
 From 543d5591618e7ff489df865930865955196dce6d Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 05:48:23 +0800
-Subject: [PATCH 12/19] pw_utils: change paramater of clear_shmbuf to reference
+Subject: [PATCH 12/22] pw_utils: change paramater of clear_shmbuf to reference
 
 ---
  src/screencasting/pw_utils.rs | 5 ++---
@@ -2245,7 +2245,7 @@ index 91df46d407..101789e8cc 100644
 From caffaebc1beab592e4591677f80eeba06cea97ce Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 05:49:35 +0800
-Subject: [PATCH 13/19] pw_utils: add `queue_after_sync` to SHM sharing
+Subject: [PATCH 13/22] pw_utils: add `queue_after_sync` to SHM sharing
 
 ---
  src/screencasting/pw_utils.rs | 3 +++
@@ -2281,7 +2281,7 @@ index 101789e8cc..83e13398a9 100644
 From 47f76a713c97d128b96d0cc66e6b450eff7b3287 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 05:52:25 +0800
-Subject: [PATCH 14/19] pw_utils: rename `mark_buffer_as_good` to
+Subject: [PATCH 14/22] pw_utils: rename `mark_buffer_as_good` to
  `mark_buffer_after_render`
 
 I will change semantic of this function in later commit.
@@ -2342,7 +2342,7 @@ index 83e13398a9..4c51ee9c18 100644
 From bbb0bf01d662d2b09b7d6f056b8bdcada0c9b3f7 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 06:05:05 +0800
-Subject: [PATCH 15/19] pw_utils: update chunk info after render to shm buffer
+Subject: [PATCH 15/22] pw_utils: update chunk info after render to shm buffer
 
 ---
  src/screencasting/pw_utils.rs | 45 +++++++++++++++++++++++------------
@@ -2447,7 +2447,7 @@ index 4c51ee9c18..673300ba02 100644
 From 8f9c4c372175f979b5fe65ad0ad6883b78837334 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 06:17:00 +0800
-Subject: [PATCH 16/19] pw_utils: avoid excessive imports
+Subject: [PATCH 16/22] pw_utils: avoid excessive imports
 
 ---
  src/screencasting/pw_utils.rs | 38 +++++++++++++++++------------------
@@ -2532,7 +2532,7 @@ index 673300ba02..ef175c9764 100644
 From 3a489100acdd6b0f260715f2605f66917b5eabea Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 06:18:36 +0800
-Subject: [PATCH 17/19] pw_utils: clean a variable name
+Subject: [PATCH 17/22] pw_utils: clean a variable name
 
 ---
  src/screencasting/pw_utils.rs | 6 +++---
@@ -2564,7 +2564,7 @@ index ef175c9764..b422c0efdd 100644
 From 57b1946b32a6dd858229c667e0261867421ff6b6 Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Tue, 2 Sep 2025 14:53:55 +0800
-Subject: [PATCH 18/19] pw_utils: remove a wrong syncpoint
+Subject: [PATCH 18/22] pw_utils: remove a wrong syncpoint
 
 ---
  src/screencasting/pw_utils.rs | 1 -
@@ -2586,7 +2586,7 @@ index b422c0efdd..accda83c30 100644
 From 6c1613cee488515f3021ae9d8ef9233d6719c13f Mon Sep 17 00:00:00 2001
 From: wrvsrx <wrvsrx@outlook.com>
 Date: Sat, 8 Nov 2025 09:02:07 +0800
-Subject: [PATCH 19/19] pw_utils: avoid some repeated reallocations
+Subject: [PATCH 19/22] pw_utils: avoid some repeated reallocations
 
 ---
  src/screencasting/pw_utils.rs | 29 ++++++++++++-----------------
@@ -2656,3 +2656,309 @@ index accda83c30..91b09b9cce 100644
              .iter_mut()
              .map(|(obj, buf)| make_pod(buf, (*obj).clone()))
              .collect();
+
+From bc45e7b9d141c8fe253940633241862f06047e29 Mon Sep 17 00:00:00 2001
+From: z <h.meng.81771@gmail.com>
+Date: Sun, 12 Jul 2026 12:35:11 +0800
+Subject: [PATCH 20/22] pw_utils: fixate non-final modifier choices
+
+Initial negotiation can advertise multiple DMA-BUF modifiers. Marking that enum as already fixated makes PipeWire select its default before niri has tested whether GBM can allocate it, which can disconnect otherwise compatible consumers such as OBS.
+
+Keep DONT_FIXATE set while multiple alternatives remain so niri can test and confirm a usable modifier. Preserve the existing implicit-modifier behavior for a lone DRM_FORMAT_MOD_INVALID, and never reopen a choice that niri has already confirmed.
+
+Cover empty, explicit, implicit, multi-modifier, and confirmed choices with unit tests.
+---
+ src/screencasting/pw_utils.rs | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/src/screencasting/pw_utils.rs b/src/screencasting/pw_utils.rs
+index 91b09b9cce..7a0e7baa5b 100644
+--- a/src/screencasting/pw_utils.rs
++++ b/src/screencasting/pw_utils.rs
+@@ -226,8 +226,7 @@ fn make_video_params(
+     let modifier_property = if modifiers.len() == 0 {
+         None
+     } else {
+-        let dont_fixate = if (!fixated) && modifiers.len() == 1 && modifiers[0] == Modifier::Invalid
+-        {
++        let dont_fixate = if modifier_choice_needs_fixation(fixated, modifiers) {
+             PropertyFlags::DONT_FIXATE
+         } else {
+             PropertyFlags::empty()
+@@ -301,6 +300,10 @@ fn make_video_params(
+     }
+ }
+ 
++fn modifier_choice_needs_fixation(fixated: bool, modifiers: &[Modifier]) -> bool {
++    !fixated && (modifiers.len() > 1 || modifiers == [Modifier::Invalid])
++}
++
+ /// this function return an extra Vec<u8> to avoid extra allocation when building Pod
+ fn make_video_params_for_initial_negotiation_with_extra_buffer(
+     possible_modifiers: &FormatSet,
+@@ -1884,3 +1887,25 @@ fn clear_shmbuf(shmbuf: &Shmbuf) -> anyhow::Result<()> {
+     }
+     Ok(())
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn modifier_choice_is_fixated_when_negotiation_requires_it() {
++        assert!(!modifier_choice_needs_fixation(false, &[]));
++        assert!(!modifier_choice_needs_fixation(false, &[Modifier::Linear]));
++        assert!(modifier_choice_needs_fixation(false, &[Modifier::Invalid]));
++        assert!(modifier_choice_needs_fixation(
++            false,
++            &[Modifier::Linear, Modifier::Invalid]
++        ));
++
++        assert!(!modifier_choice_needs_fixation(true, &[Modifier::Invalid]));
++        assert!(!modifier_choice_needs_fixation(
++            true,
++            &[Modifier::Linear, Modifier::Invalid]
++        ));
++    }
++}
+
+From 3781c9e0db9c60717d8da826313646e1ec1c6ee1 Mon Sep 17 00:00:00 2001
+From: z <h.meng.81771@gmail.com>
+Date: Sun, 12 Jul 2026 12:39:05 +0800
+Subject: [PATCH 21/22] pw_utils: validate SHM buffer layout for SPA
+
+SHM allocation previously kept its stride and size as usize values and converted them only when filling SPA metadata. A sufficiently large virtual output could therefore truncate the advertised max size or stride even though the memfd allocation itself succeeded.
+
+Represent the layout using the exact i32 stride and u32 size types required by spa_chunk, and derive memfd allocation, rendering bounds, clearing, and metadata from that single validated value. Reject arithmetic overflow and layouts outside SPA limits before allocating a buffer.
+
+Add coverage for a normal 4K layout, an i32 stride overflow, and a u32 buffer-size overflow.
+---
+ src/screencasting/pw_utils.rs | 69 ++++++++++++++++++++++++++---------
+ 1 file changed, 51 insertions(+), 18 deletions(-)
+
+diff --git a/src/screencasting/pw_utils.rs b/src/screencasting/pw_utils.rs
+index 7a0e7baa5b..3b09ce7472 100644
+--- a/src/screencasting/pw_utils.rs
++++ b/src/screencasting/pw_utils.rs
+@@ -961,7 +961,7 @@ impl PipeWire {
+                                         assert!((*spa_data).type_ & (1 << DataType::MemFd.as_raw()) > 0);
+ 
+                                         (*spa_data).type_ = DataType::MemFd.as_raw();
+-                                        (*spa_data).maxsize = shmbuf.size as u32;
++                                        (*spa_data).maxsize = shmbuf.layout.size;
+                                         (*spa_data).fd = shmbuf.fd.as_raw_fd() as i64;
+                                         (*spa_data).flags = SPA_DATA_FLAG_READWRITE;
+ 
+@@ -1603,8 +1603,34 @@ fn allocate_dmabuf(
+ #[derive(Debug, Clone)]
+ pub struct Shmbuf {
+     fd: Rc<rustix::fd::OwnedFd>,
+-    stride: usize,
+-    size: usize,
++    layout: ShmLayout,
++}
++
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++struct ShmLayout {
++    stride: i32,
++    size: u32,
++}
++
++impl ShmLayout {
++    fn new(size: Size<u32, Physical>) -> anyhow::Result<Self> {
++        let stride = size
++            .w
++            .checked_mul(SHM_BYTES_PER_PIXEL as u32)
++            .context("SHM stride overflows u32")?;
++        let buffer_size = stride
++            .checked_mul(size.h)
++            .context("SHM buffer size overflows u32")?;
++
++        Ok(Self {
++            stride: stride.try_into().context("SHM stride exceeds i32")?,
++            size: buffer_size,
++        })
++    }
++
++    fn size_usize(self) -> usize {
++        self.size as usize
++    }
+ }
+ 
+ enum SharingBuf<'a> {
+@@ -1613,16 +1639,14 @@ enum SharingBuf<'a> {
+ }
+ 
+ fn allocate_shmbuf(size: Size<u32, Physical>) -> anyhow::Result<Shmbuf> {
+-    let (w, h) = (size.w as usize, size.h as usize);
+-    let stride = w * SHM_BYTES_PER_PIXEL;
+-    let size = stride * h;
++    let layout = ShmLayout::new(size)?;
+     let fd = rustix::fs::memfd_create(
+         "shm_buffer",
+         rustix::fs::MemfdFlags::CLOEXEC
+         | rustix::fs::MemfdFlags::ALLOW_SEALING,
+     )
+         .context("error creating memfd")?;
+-    let _ = rustix::fs::ftruncate(&fd, size.try_into().unwrap())
++    let _ = rustix::fs::ftruncate(&fd, layout.size.into())
+         .context("error set size of the fd")?;
+     let _ = rustix::fs::fcntl_add_seals(
+         &fd,
+@@ -1633,8 +1657,7 @@ fn allocate_shmbuf(size: Size<u32, Physical>) -> anyhow::Result<Shmbuf> {
+         .context("error sealing the fd")?;
+     Ok(Shmbuf {
+         fd: fd.into(),
+-        size,
+-        stride,
++        layout,
+     })
+ }
+ 
+@@ -1677,7 +1700,7 @@ unsafe fn mark_buffer_after_render(pw_buffer: NonNull<pw_buffer>, sequence: &mut
+         }
+         SharingBuf::SHM(shmbuf) => {
+             (*chunk).size = 1;
+-            (*chunk).stride = shmbuf.stride as i32;
++            (*chunk).stride = shmbuf.layout.stride;
+             (*chunk).offset = 0;
+         }
+     }
+@@ -1707,7 +1730,7 @@ fn render_to_shmbuf(
+     elements: impl Iterator<Item = impl RenderElement<GlesRenderer>>,
+ ) -> anyhow::Result<()> {
+     let expected_size = size.w as usize * size.h as usize * SHM_BYTES_PER_PIXEL as usize;
+-    ensure!(buffer.size == expected_size, "invalid buffer size");
++    ensure!(buffer.layout.size_usize() == expected_size, "invalid buffer size");
+     let mapping = render_and_download(renderer, size, scale, transform, fourcc, elements)?;
+     let bytes = renderer
+         .map_texture(&mapping)
+@@ -1716,14 +1739,14 @@ fn render_to_shmbuf(
+     unsafe {
+         let buf = rustix::mm::mmap(
+             std::ptr::null_mut(),
+-            buffer.size as usize,
++            buffer.layout.size_usize(),
+             rustix::mm::ProtFlags::READ | rustix::mm::ProtFlags::WRITE,
+             rustix::mm::MapFlags::SHARED,
+             buffer.fd.clone(),
+             0,
+         )?;
+-        ptr::copy_nonoverlapping(bytes.as_ptr(), buf.cast(), buffer.size);
+-        let _ = rustix::mm::munmap(buf, buffer.size).unwrap();
++        ptr::copy_nonoverlapping(bytes.as_ptr(), buf.cast(), buffer.layout.size_usize());
++        let _ = rustix::mm::munmap(buf, buffer.layout.size_usize()).unwrap();
+     }
+     Ok(())
+ }
+@@ -1872,18 +1895,18 @@ unsafe fn add_cursor_metadata(
+ }
+ 
+ fn clear_shmbuf(shmbuf: &Shmbuf) -> anyhow::Result<()> {
+-    let bytes: Vec<u8> = vec![0u8; shmbuf.size];            
++    let bytes: Vec<u8> = vec![0u8; shmbuf.layout.size_usize()];
+     unsafe {
+         let buf = rustix::mm::mmap(
+             std::ptr::null_mut(),
+-            shmbuf.size as usize,
++            shmbuf.layout.size_usize(),
+             rustix::mm::ProtFlags::READ | rustix::mm::ProtFlags::WRITE,
+             rustix::mm::MapFlags::SHARED,
+             shmbuf.fd.clone(),
+             0,
+         )?;
+-        ptr::copy_nonoverlapping(bytes.as_ptr(), buf.cast(), shmbuf.size);
+-        let _ = rustix::mm::munmap(buf, shmbuf.size).unwrap();
++        ptr::copy_nonoverlapping(bytes.as_ptr(), buf.cast(), shmbuf.layout.size_usize());
++        let _ = rustix::mm::munmap(buf, shmbuf.layout.size_usize()).unwrap();
+     }
+     Ok(())
+ }
+@@ -1908,4 +1931,14 @@ mod tests {
+             &[Modifier::Linear, Modifier::Invalid]
+         ));
+     }
++
++    #[test]
++    fn shm_layout_uses_spa_representable_dimensions() {
++        let layout = ShmLayout::new(Size::from((3840, 2160))).unwrap();
++        assert_eq!(layout.stride, 15360);
++        assert_eq!(layout.size, 33_177_600);
++
++        assert!(ShmLayout::new(Size::from((536_870_912, 1))).is_err());
++        assert!(ShmLayout::new(Size::from((500_000_000, 3))).is_err());
++    }
+ }
+
+From ab45d90b8e727522e7e829682dbb7132ed332f0c Mon Sep 17 00:00:00 2001
+From: z <h.meng.81771@gmail.com>
+Date: Sun, 12 Jul 2026 12:43:24 +0800
+Subject: [PATCH 22/22] pw_utils: report complete SHM chunks after rendering
+
+spa_chunk.size describes the valid byte range for MemFd buffers. Reusing the DMA-BUF sentinel value of one therefore exposes only a single byte to consumers that honor SPA metadata, leaving them with empty frames even though niri rendered the full image.
+
+Publish the complete validated SHM layout after rendering, reset the offset and stride, and clear any corruption flag left when the same PipeWire buffer was previously returned unused. Keep the DMA-BUF size sentinel unchanged for compatibility with OBS.
+
+Exercise the update against an actual spa_chunk initialized with stale and corrupted metadata.
+---
+ src/screencasting/pw_utils.rs | 31 +++++++++++++++++++++++++++----
+ 1 file changed, 27 insertions(+), 4 deletions(-)
+
+diff --git a/src/screencasting/pw_utils.rs b/src/screencasting/pw_utils.rs
+index 3b09ce7472..41df021733 100644
+--- a/src/screencasting/pw_utils.rs
++++ b/src/screencasting/pw_utils.rs
+@@ -1695,13 +1695,11 @@ unsafe fn mark_buffer_after_render(pw_buffer: NonNull<pw_buffer>, sequence: &mut
+             // However, OBS checks for size != 0 as a workaround for old compositor versions,
+             // so we set it to 1.
+             (*chunk).size = 1;
+-            // Clear the corrupted flag we may have set before.
++            // Clear the corrupted flag that return_unused_buffer() may have set.
+             (*chunk).flags = SPA_CHUNK_FLAG_NONE as i32;
+         }
+         SharingBuf::SHM(shmbuf) => {
+-            (*chunk).size = 1;
+-            (*chunk).stride = shmbuf.layout.stride;
+-            (*chunk).offset = 0;
++            mark_shm_chunk_rendered(&mut *chunk, shmbuf.layout);
+         }
+     }
+ 
+@@ -1715,6 +1713,13 @@ unsafe fn mark_buffer_after_render(pw_buffer: NonNull<pw_buffer>, sequence: &mut
+     }
+ }
+ 
++fn mark_shm_chunk_rendered(chunk: &mut spa_chunk, layout: ShmLayout) {
++    chunk.offset = 0;
++    chunk.size = layout.size;
++    chunk.stride = layout.stride;
++    chunk.flags = SPA_CHUNK_FLAG_NONE as i32;
++}
++
+ unsafe fn find_meta_header(buffer: *mut spa_buffer) -> Option<NonNull<spa_meta_header>> {
+     let p = spa_buffer_find_meta_data(buffer, SPA_META_Header, size_of::<spa_meta_header>()).cast();
+     NonNull::new(p)
+@@ -1941,4 +1946,22 @@ mod tests {
+         assert!(ShmLayout::new(Size::from((536_870_912, 1))).is_err());
+         assert!(ShmLayout::new(Size::from((500_000_000, 3))).is_err());
+     }
++
++    #[test]
++    fn rendered_shm_chunk_covers_the_full_buffer() {
++        let layout = ShmLayout::new(Size::from((3840, 2160))).unwrap();
++        let mut chunk = spa_chunk {
++            offset: 42,
++            size: 1,
++            stride: -1,
++            flags: SPA_CHUNK_FLAG_CORRUPTED as i32,
++        };
++
++        mark_shm_chunk_rendered(&mut chunk, layout);
++
++        assert_eq!(chunk.offset, 0);
++        assert_eq!(chunk.size, 33_177_600);
++        assert_eq!(chunk.stride, 15360);
++        assert_eq!(chunk.flags, SPA_CHUNK_FLAG_NONE as i32);
++    }
+ }
