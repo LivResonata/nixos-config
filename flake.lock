@@ -649,10 +649,10 @@
     "sensitivesSecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1783409103,
-        "narHash": "sha256-kioW12lsasIhWNU9rneZ2RPmh0trHh+WeNEm1XTX/w4=",
+        "lastModified": 1784887338,
+        "narHash": "sha256-FNRUrF4yodlt1BJy2LXPRJtmoLur8nEuy+3rv+zevIU=",
         "ref": "main",
-        "rev": "4de689b666b935002e352266f4d11711206e9051",
+        "rev": "096a7dbaa02adedcb2819014321ec349776e996e",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/LivResonata/nixos-secrets.git"
@@ -819,11 +819,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784287306,
-        "narHash": "sha256-N0uYliEuDJ7BCH9th1QKmlz1ddGjBwwL8LIvTpM/pt4=",
+        "lastModified": 1784586513,
+        "narHash": "sha256-ewIv3xH9bQK7uMkU3xK6NWFEW5oIuAtIny8ifJwcY/E=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "b039696b48f7796a753f9848cf004dbe072541f5",
+        "rev": "0ea161e9ac257510acabfb6e9dbf13630298760d",
         "type": "github"
       },
       "original": {
