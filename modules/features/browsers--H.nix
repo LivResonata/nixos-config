@@ -126,7 +126,10 @@
                 #### 0 = Default Off; 2 = Custom; 3 = Warn if Unavailable; 5 = Off by Choice;
                 #### See: https://wiki.mozilla.org/Trusted_Recursive_Resolver#DNS-over-HTTPS_Prefs_in_Firefox
                 "network.trr.mode" = {
-                  Value = if config.programs.zen-browser.policies.DNSOverHTTPS.Enabled then 3 else 5;
+                  # Value = if config.programs.zen-browser.policies.DNSOverHTTPS.Enabled then 3 else 5;
+                  Status = "user";
+                  Value = 5; # DoH seems to fail at unpredictable times. Fallback to OS DNS instead.
+                  Type = "number";
                 };
                 ### - Custom DNS server (Used in Modes 2 and 3 and if selecting a custom source)
                 "network.trr.custom_uri" = {
@@ -159,10 +162,11 @@
                   Status = "locked";
                 };
                 ## - Allow websites to ask the user to receive site notifications.
-                ### "0" = Always Ask; "2" = Block
+                ### 0 = Always Ask; 2 = Block
                 "permissions.default.desktop-notification" = {
                   Value = 0;
                   Status = "locked";
+                  Type = "number";
                 };
                 ## - Enable Enhanced Tracking Protection or Fingerprinting Protection
                 "privacy.fingerprintingProtection" = {
@@ -171,9 +175,10 @@
                 };
                 ## - Enable Resist Fingerprinting
                 ### Differs from `privacy.fingerprintingProtection` found in Enhanced Tracking Protection.
+                ### Can be quite disruptive for some sites.
                 "privacy.resistFingerprinting" = {
-                  Value = true;
-                  Status = "locked";
+                  Value = false;
+                  Status = "user";
                 };
                 ## - Enable Container Tabs
                 "privacy.userContext.enabled" = {
@@ -183,11 +188,14 @@
                 ## - Enable userChrome browser customization
                 "toolkit.legacyUserProfileCustomizations.stylesheets" = {
                   Value = true;
+                  Status = "user";
                 };
                 ## - Use Native XDG Desktop Portal File Picker
+                ### 1 = Always System
                 "widget.use-xdg-desktop-portal.file-picker" = {
                   Value = 1;
                   Status = "locked";
+                  Type = "number";
                 };
                 ## - Disable alt menu
                 "ui.key.menuAccessKeyFocuses" = {
