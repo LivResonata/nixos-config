@@ -59,7 +59,6 @@
           # Archival Utilities
           zip
           lzip
-          pzip
           p7zip
           unrar
           unzip
