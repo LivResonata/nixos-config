@@ -51,7 +51,11 @@
 
     ## Noctalia Shell - A sleek and minimal desktop shell thoughtfully crafted for Wayland
     noctalia = {
-      url = "github:noctalia-dev/noctalia";
+      #  Point to the latest Git commit. May have cache misses.
+      #url = "github:noctalia-dev/noctalia";
+
+      # Point to the latest cached Git commit from Noctalia's Cachix.
+      url = "github:noctalia-dev/noctalia/cachix";
 
       # Uncomment if Noctalia's Cachix binary cache isn't in use.
       ## See: https://docs.noctalia.dev/v5/getting-started/nixos/?section=binary-cache#binary-cache

@@ -4,7 +4,7 @@
   eudev,
   fetchFromGitHub,
   installShellFiles,
-  libdisplay-info,
+  libdisplay-info_0_3,
   libglvnd,
   libinput,
   libxkbcommon,
@@ -62,7 +62,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ];
 
   buildInputs = [
-    libdisplay-info
+    libdisplay-info_0_3
     libglvnd # For libEGL
     libinput
     libxkbcommon
