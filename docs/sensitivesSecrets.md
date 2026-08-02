@@ -1,4 +1,4 @@
-# Secrets and Sensitives
+# Sensitives and Secrets
 
 > [!Warning]
 > This repository makes use of [sops-nix](https://github.com/mic92/sops-nix) and [pkgs.sops](https://search.nixos.org/packages?channel=unstable&query=sops#show=sops) for encrypted values alongside items that are locally world-readable on NixOS builds.
@@ -7,9 +7,9 @@
 
 ## Table of Contents
 
-- [Table of Contents](<./secretsSensitives.md#Table-of-Contents>)
-  - [Terminology](<secretsSensitives.md#Terminology>)
-  - [Affected Files and Code](<secretsSensitives.md#Affected-Files-and-Code>)
+- [Table of Contents](<./sensitivesSecrets.md#Table-of-Contents>)
+  - [Terminology](<./sensitivesSecrets.md#Terminology>)
+  - [Affected Files and Code](<./sensitivesSecrets.md#Affected-Files-and-Code>)
 
 ## Terminology
 

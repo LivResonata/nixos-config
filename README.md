@@ -11,7 +11,7 @@ This is an overhaul of my private configuration from using NixOS the first time 
   - [LLM Assistance](README.md#LLM-Assistance)
 - [Hosts](<README.md#Hosts>)
 - [Features and Modules](<README.md#Features-and-Modules>)
-- [Secrets and Sensitives](<README.md#Secrets-and-Sensitives>)
+- [Sensitives and Secrets](<README.md#Secrets-and-Sensitives>)
 - [Overlays and Packages](<README.md#Overlays-and-Packages>)
 - [Goals](<README.md#Goals>)
 - [Credits](<README.md#Credits>)
@@ -54,7 +54,7 @@ List of each features and its description is provided in the documentation link 
 
 It also contains on how to use the modules for both NixOS and Home Manager.
 
-## Secrets and Sensitives
+## Sensitives and Secrets
 
 > [!Warning]
 > This repository makes use of [sops-nix](https://github.com/mic92/sops-nix) and [pkgs.sops](https://search.nixos.org/packages?channel=unstable&query=sops#show=sops) for encrypted values alongside items that are locally world-readable on NixOS builds.
@@ -63,7 +63,7 @@ It also contains on how to use the modules for both NixOS and Home Manager.
 
 To know more on what to do, visit the associated document here:
 
-> [**Secrets and Sensitives** at `./docs/secretsSensitives.md`](./docs/secretsSensitives.md)
+> [**Sensitives and Secrets** at `./docs/sensitivesSecrets.md`](./docs/sensitivesSecrets.md)
 
 ## Overlays and Packages
 
