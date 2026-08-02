@@ -1,4 +1,4 @@
-# Features
+# Features and Modules
 
 These are modular components that can be added to any hosts or users.
 
@@ -11,6 +11,7 @@ These are modular components that can be added to any hosts or users.
 
 ## Table of Contents
 
+- [Table of Contents](<./features.md#Table-of-Contents>)
 - [Adding Modules](<./features.md#Adding-Modules>)
   - [1. flake.nix](<./features.md#1-flakenix>)
   - [2. NixOS Host Configuration](<./features.md#2-NixOS-Host-Configuration>)

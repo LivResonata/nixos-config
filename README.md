@@ -7,26 +7,34 @@ This is an overhaul of my private configuration from using NixOS the first time 
 ## Table of Contents
 
 - [Inspiration and Limitations](<README.md#Inspiration-and-Limitations>)
+  - [The Dendritic Pattern](<README.md#The-Dendritic-Pattern>)
+  - [LLM Assistance](README.md#LLM-Assistance)
 - [Hosts](<README.md#Hosts>)
-- [Features](<README.md#Features>)
-- [Overlays and Packages](<README.md#Overlays-and-Packages>)
+- [Features and Modules](<README.md#Features-and-Modules>)
 - [Secrets and Sensitives](<README.md#Secrets-and-Sensitives>)
-  - [Terminology](<README.md#Terminology>)
-  - [Affected Files and Code](<README.md#Affected-Files-and-Code>)
+- [Overlays and Packages](<README.md#Overlays-and-Packages>)
 - [Goals](<README.md#Goals>)
 - [Credits](<README.md#Credits>)
 
 ## Inspiration and Limitations
 
+### The Dendritic Pattern 
+
 This project is inspired by [The Dendritic Pattern](https://github.com/mightyiam/dendritic) by **mightyjam** and **[Vimjoyer](https://www.youtube.com/@vimjoyer)**'s coverage of it.
 
 > [!Warning]
->As noted in the pattern guide, this repository and its configuration may be or is affected by the [anti-patterns](https://github.com/mightyiam/dendritic#anti-patterns) of "*Not declaring options*", "*specialArgs pass-thru*". and "*Lower-level module name proliferation*".
+> As noted in the pattern guide, this repository and its configuration may be or is affected by the [anti-patterns](https://github.com/mightyiam/dendritic#anti-patterns) of "*Not declaring options*", "*specialArgs pass-thru*". and "*Lower-level module name proliferation*".
 
-> [!Note]
-> While noting that the guide mentions that [exceptions can be made](https://github.com/mightyiam/dendritic#fanaticism), the current setup mainly aims to make use of not needing relative import paths as its primary goal— resulting to being modular.
->
-> Following the pattern faithfully may be done another time as a room for improvement.
+
+While noting that the guide mentions that [exceptions can be made](https://github.com/mightyiam/dendritic#fanaticism), the current setup mainly aims to make use of not needing relative import paths as its primary goal— resulting to being modular.
+
+Following the pattern faithfully may be done another time as a room for improvement.
+
+### LLM Assistance
+
+Alongside reading documentation and other publically available code for Nixpkgs and NixOS, [Proton Lumo](https://lumo.proton.me/), an LLM, is used to help in understanding docs and generating code. All code is cross-referenced and checked to match expectations.
+
+Any AI-generated code will be commented to signify its presence. However, the goal of this project is for me to learn to be able to do it myself. Thus, over time, if I am confident enough that I understand the generated code, I will remove the comment— especially when I also use it in other places with my own writing.
 
 ## Hosts
 
@@ -36,15 +44,26 @@ This project is inspired by [The Dendritic Pattern](https://github.com/mightyiam
 | -------- | --- | --- | --- |
 | flos     | AMD Athlon 3000G | AMD Radeon Vega 3 (iGPU) | 16GB (2x8GB) |
 
-## Features
+## Features and Modules
 
 These are modular components that can be added to any hosts or users.
 
 List of each features and its description is provided in the documentation link below:
 
-> [Features at `./docs/features.md`](./docs/features.md)
+> [**Features and Modules** at `./docs/features.md`](./docs/features.md)
 
 It also contains on how to use the modules for both NixOS and Home Manager.
+
+## Secrets and Sensitives
+
+> [!Warning]
+> This repository makes use of [sops-nix](https://github.com/mic92/sops-nix) and [pkgs.sops](https://search.nixos.org/packages?channel=unstable&query=sops#show=sops) for encrypted values alongside items that are locally world-readable on NixOS builds.
+>
+> When taking any code, affected configurations must be modified to function outside this repository and its intended hosts and users.
+
+To know more on what to do, visit the associated document here:
+
+> [**Secrets and Sensitives** at `./docs/secretsSensitives.md`](./docs/secretsSensitives.md)
 
 ## Overlays and Packages
 
@@ -73,52 +92,6 @@ The following code is used in NixOS Host Configurations to utilize `perSystem.pa
 > I am still confused on whether there is a better way of overriding or creating packages that can see one another in overlays (e.g. `packages.kcgroup` being invisible to other `perSystem.packages`, resulting to build failure).
 > 
 > There may be room for improvement which I don't know nor understand yet, but for now— this will do.
-
-## Secrets and Sensitives
-
-> [!Warning]
-> This repository makes use of [sops-nix](https://github.com/mic92/sops-nix) and [pkgs.sops](https://search.nixos.org/packages?channel=unstable&query=sops#show=sops) for encrypted values alongside items that are locally world-readable on NixOS builds.
->
-> When taking any code, affected configurations must be modified to function outside this repository and its intended hosts and users.
-
-### Terminology
-
-- **Sensitives** — These shouldn't be public in a repository, but can be world-readable in local NixOS builds.
-
-- **Secrets** — Must be encrypted at all times and isn't world-readable.
-
-### Affected Files and Code
-
-> [!Important]
-> The associated `flake.nix` input, `sensitivesSecrets`, have to be removed.
->
-> Likewise, any options that utilize the input and program also have to be modified to work without it or made to your own use-case. 
-
-| File | Type |
-| ---- | ---- |
-| /flake.nix | Flake |
-| ./modules/features/browsers\--H.nix | Features |
-| ./modules/features/flatpak\--HN.nix | Features |
-| ./modules/hosts/flos/configuration\--N.nix | NixOS Host Configuration |
-| ./modules/hosts/flos/networking\--N.nix | NixOS Host Modules |
-| ./modules/users/livresonata\--HN.nix | User Setup Modules |
-
-And here's a reference regarding what code to modify or remove:
-
-```
-{ config, ... }:
-let
-  sensitivesSecretsPath = builtins.toString inputs.sensitivesSecrets;
-  sensitivesSecretsData = builtins.fromJSON (builtins.readFile "${sensitivesSecretsPath}/sensitives.json");
-in
-{
-  # For sensitives
-  sensitivesExample = sensitivesSecretsData.<name>.<sub-trees>;
-  
-  # For secrets
-  secretsExample = config.sops.secrets.<name>.path;
-}
-```
 
 ## Goals
 

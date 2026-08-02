@@ -9,7 +9,7 @@
     }:
     {
       # Auto-generated file by `nixos-generate-config`. Do not modify!
-      # Ported to Flake Parts and the Dedritic Pattern.
+      # Ported into Flake Parts.
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
       ];

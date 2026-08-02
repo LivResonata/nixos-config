@@ -8,7 +8,6 @@
 {
   flake.nixosConfigurations.flos =
     # Utilizes withSystem and specialArgs to make use of perSystem packages within this host.
-    # This is done despite the Dendritic Pattern advising against specialArgs since brain cannot brain anymore.
     ## See: https://flake.parts/module-arguments#withsystem
     ##      https://github.com/mightyiam/dendritic#specialargs-pass-thru
     withSystem "x86_64-linux" (
