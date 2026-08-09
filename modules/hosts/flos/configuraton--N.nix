@@ -93,6 +93,7 @@
       };
 
       # Custom feature module options
+      fonts.monochromeEmoji.enable = true;
       hardware.performance.dmemcg.enable = false;
       services.pipewire.virtSurround.enable = true;
       hardware.drawingTablet.platform = "opentabletdriver";

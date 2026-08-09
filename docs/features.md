@@ -194,7 +194,7 @@ These are modules that are expected to be added to per-host and per-user configu
 | drawingTablet  | |   | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
 | editor         | |   | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
 | flatpak        | |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
-| fonts          | |   | &check; |         |         | Contains font packages and options outside theming modules. |
+| fonts          | |   | &check; |         | &check; | Contains font packages and options outside theming modules. |
 | gaming         | |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
 | git            | |   | &check; | &check; |         | Enables Git and repository management utilities. |
 | graphics       | |   |         | &check; |         | Contains packages for graphic design and art. |
