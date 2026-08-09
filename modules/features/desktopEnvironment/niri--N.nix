@@ -3,7 +3,7 @@
 {
   # Niri scrollable-tiling window manager with Noctalia Shell
   ## Niri Docs: https://wiki.nixos.org/wiki/Niri
-  ## Noctalia Shell v5 Docs: https://docs.noctalia.dev/v5/
+  ## Noctalia Shell Docs: https://docs.noctalia.dev/noctalia/
   ## (Not Really) KDE on Niri Guide: https://gist.github.com/linhusp/05f8f7e0af3fa0fbb944dec17a75aa78
   ## qtengine: https://github.com/kossLAN/qtengine
 
@@ -170,10 +170,16 @@
           package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
           greeter-args = "--session niri";
 
-          settings.cursor = {
-            theme = "Breeze Dark";
-            size = 16;
-            package = pkgs.kdePackages.breeze;
+          settings = {
+            cursor = {
+              theme = "breeze_cursors";
+              size = 16;
+              path = "${pkgs.kdePackages.breeze}/share/icons";
+            };
+
+            keyboard = {
+              numlock = false;
+            };
           };
         };
       };
@@ -182,6 +188,7 @@
 
       services = {
         upower.enable = true;
+        accounts-daemon.enable = true; # For Noctalia Greeter user profile synchronization.
         gnome.gnome-keyring.enable = true; # Required by Noctalia Shell, not interchangeable.
         power-profiles-daemon.enable = true;
 
@@ -201,7 +208,6 @@
             media-player-info
           ];
         };
-
       };
 
       xdg = {
