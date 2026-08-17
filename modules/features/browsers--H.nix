@@ -3,7 +3,6 @@
 {
   flake.homeModules.browsers =
     {
-      config,
       osConfig,
       pkgs,
       ...
@@ -20,17 +19,7 @@
       ];
 
       home.packages = with pkgs; [
-        (vivaldi.override (
-          { ... }:
-          {
-            # Additional parameters
-            ## - https://github.com/NixOS/nixpkgs/pull/292147#issuecomment-2343586641
-            enableWidevine = true;
-            proprietaryCodecs = true;
-          }
-        ))
         ungoogled-chromium
-        vivaldi-ffmpeg-codecs
       ];
 
       programs = {
@@ -58,7 +47,7 @@
 
               EnableTrackingProtection = {
                 Value = true;
-                Locked = true;
+                Locked = false;
                 Cryptomining = true;
                 Fingerprinting = true;
               };
@@ -101,14 +90,16 @@
                   Status = "locked";
                 };
                 ## -  Enable developer console text box or prompt box
+                ## Also used alongside user stylesheets for theming.
                 "devtools.chrome.enabled" = {
                   Value = true;
                   Status = "locked";
                 };
                 ## - Enable Vulkan Video Decoding
+                ## May not utilize HW decoding at all despite Vulkan decoding being present.
                 "media.hardware-video-decoding-vulkan.enabled" = {
-                  Value = true;
-                  Status = "locked";
+                  Value = false;
+                  Status = "user";
                 };
                 ## - Disable middle-mouse clipboard paste
                 "middlemouse.paste" = {
@@ -117,7 +108,7 @@
                 };
                 ## - Enforce DNS-over-HTTPS (DoH) | Unlocked Policy
                 ## See: https://www.librewolf.net/docs/faq/#doh-what-is-the-currently-recommended-way-to-enable-doh
-                ### - Allows the use of private IP addresses (RFC 1918) in DOH responses
+                ### - Allows the use of private IP addresses (RFC 1918) in DoH responses
                 "network.trr.allow-rfc1918" = {
                   Value = true;
                   Status = "locked";
@@ -212,8 +203,8 @@
                 };
                 ## - Enable custom gradient HEX color menu
                 "zen.theme.gradient.show-custom-colors" = {
-                  Value = true;
-                  Status = "locked";
+                  Value = false;
+                  Status = "user";
                 };
                 ## - Display Enhanced Tracking Protection icon in the URL bar
                 "zen.urlbar.show-protections-icon" = {
