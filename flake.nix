@@ -40,7 +40,7 @@
     };
 
     ## Nixcord - Declarative Vencord plugins and options
-    nixcord.url = "github:flameflag/nixcord";
+    nixcord.url = "github:4evy/nixcord";
 
     ## Nix-CachyOS-Kernel - https://github.com/xddxdd/nix-cachyos-kernel
     ### Switch to `master` branch by removing `release` for bleeding-edge.
