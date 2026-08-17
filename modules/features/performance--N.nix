@@ -88,7 +88,7 @@
             power-profiles-daemon.enable = true;
 
             ananicy = {
-              enable = true;
+              enable = false; # Currently broken. Enable once fixed, no bug report yet.
               package = pkgs.ananicy-cpp;
               rulesProvider = pkgs.ananicy-rules-cachyos;
             };

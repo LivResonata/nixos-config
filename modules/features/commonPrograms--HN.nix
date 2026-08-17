@@ -136,7 +136,7 @@
 
           discord = {
             enable = true;
-            branch = "stable"; # stable, ptb, canary, development
+            branches = [ "stable" ]; # stable, ptb, canary, development
             vencord.enable = true;
             openASAR.enable = false;
             commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll" ];
