@@ -14,6 +14,7 @@ This is an overhaul of my private configuration from using NixOS the first time 
 - [Sensitives and Secrets](<README.md#Secrets-and-Sensitives>)
 - [Overlays and Packages](<README.md#Overlays-and-Packages>)
 - [Goals](<README.md#Goals>)
+- [License](<README.md#License>)
 - [Credits](<README.md#Credits>)
 
 ## Inspiration and Limitations
@@ -99,6 +100,12 @@ These are ideas that may propel, are rooms of improvement, or are simply noted f
 
 1. - [ ] Utilize [The Dendritic Pattern](https://github.com/mightyiam/dendritic#the-dendritic-pattern) design faithfully.
 2. - [ ] Implement [Impermanence](https://github.com/nix-community/impermanence).
+
+## License
+
+This project is covered under the [MIT License](<./LICENSE>) unless stated otherwise such as, but not limited to: code comments, file names, and license text files.
+
+Ownership and credits may also be written in the same files or content if required to do so.
 
 ## Credits
 

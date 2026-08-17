@@ -6,10 +6,10 @@
     let
       cfg = config.services.pipewire.virtSurround;
 
-      cfgSofaSource = "/etc/nixos/hosts/flos/pipewire/spatializer-virt-surround/SADIE_KU-100.sofa";
-      cfgSofaSymlink = "/etc/pipewire-hrtf/Spatializer/SADIE_KU-100.sofa";
-      cfgSofaGain = 0; # This depends on the .sofa file in use. Better left alone unless you know what to do, 'cuz I don't.
-      cfgMixLRGain = 0.3; # Controls all mixers. Value `0.1` - `1.0`, less for quiet. Easier to predict.
+      cfgSofaSource = "/etc/nixos/modules/features/audio/virtSurround/D1_48K_24bit_256tap_FIR_SOFA.sofa";
+      cfgSofaSymlink = "/etc/pipewire-hrtf/Spatializer/D1_48K_24bit_256tap_FIR_SOFA.sofa";
+      cfgSofaGain = 1; # This depends on the .sofa file in use. Better left alone unless you know what to do, 'cuz I don't.
+      cfgMixLRGain = 0.3; # Controls all mixers. Value `0.1` - `1.0`. Less for quiet, more for louder sound. Easier to tweak.
     in
     {
       options.services.pipewire.virtSurround = {
@@ -17,21 +17,40 @@
           default = false;
           example = true;
           description = ''
-            Whether to enable virtual surround via SADIE KU-100 spatializer.
+            Whether to enable 7.1 virtual surround via SADIE KU-100 spatializer.
+            Ensure that audio programs are outputting to this virtSurround sink before any other sinks (e.g. EasyEffects).
+
+            File: D1_48K_24bit_256tap_FIR_SOFA.sofa
+            Copyright 2018, University of York. Licensed under the Apache License, Version 2.0 (the "License").
+            More information in the `virtSurround.nix` file and "virtSurround" feature module folder.
           '';
         };
       };
 
       config = lib.mkIf cfg.enable {
-        environment.etc."pipewire-hrtf/Spatializer/SADIE_KU-100.sofa" = {
-          # Sofa File
-          ## See: https://airtable.com/appayGNkn3nSuXkaz/shruimhjdSakUPg2m/tbloLjoZKWJDnLtTc
-          source = cfgSofaSymlink;
+        environment.etc."pipewire-hrtf/Spatializer/D1_48K_24bit_256tap_FIR_SOFA.sofa" = {
+          # Sofa File - SADIE D01 - Neumann KU 100 - Far-field HRTF
+          ## License: Apache License 2.0
+          /*
+            Copyright 2018, University of York. Licensed under the Apache License, Version 2.0 (the "License");
+            You may not use this database except in compliance with the License. You may obtain a copy of the License here.
+            Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
+            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+            and limitations under the License. All measurements are Copyright University of York. The University of York makes no representation or
+            warranties with respect to the contents hereof and specifically disclaim any implied warranties or merchantability or
+            fitness for any particular purpose. The University of York also reserves the right to modify the database and
+            its documentation without the obligation of notifying any person of the changes.' The original dataset must be
+            referenced whenever used in original or modified form. If used for academic work, please cite the following Open Access journal paper DOI: 10.3390/app8112029
+          */
+          ## See: https://www.york.ac.uk/sadie-project/database.html
+          ##      https://airtable.com/appayGNkn3nSuXkaz/shruimhjdSakUPg2m/tbloLjoZKWJDnLtTc
+
+          source = cfgSofaSource;
           mode = "symlink";
         };
 
         services.pipewire.extraConfig.pipewire = {
-          "20-spatializer-virt-surround" = {
+          "20-virtSurround" = {
             # Spatializer Sink
             ## See: https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/daemon/filter-chain/spatializer-single.conf
             ##      https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Filter-Chain
@@ -42,8 +61,8 @@
                 flags = [ "nofail" ];
 
                 args = {
-                  "node.description" = "Spatial Virt-Surround Sink";
-                  "media.name" = "Spatial Virt-Surround Sink";
+                  "node.description" = "Spatial Virt-Surround 7.1 Sink";
+                  "media.name" = "Spatial Virt-Surround 7.1 Sink";
 
                   "filter.graph" = {
                     nodes = [
@@ -52,7 +71,7 @@
                         label = "spatializer";
                         name = "spFL";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -66,7 +85,7 @@
                         label = "spatializer";
                         name = "spFR";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -80,7 +99,7 @@
                         label = "spatializer";
                         name = "spFC";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -94,7 +113,7 @@
                         label = "spatializer";
                         name = "spRL";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -108,7 +127,7 @@
                         label = "spatializer";
                         name = "spRR";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -122,7 +141,7 @@
                         label = "spatializer";
                         name = "spSL";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -136,7 +155,7 @@
                         label = "spatializer";
                         name = "spSR";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -150,7 +169,7 @@
                         label = "spatializer";
                         name = "spLFE";
                         config = {
-                          filename = cfgSofaSource;
+                          filename = cfgSofaSymlink;
                           gain = cfgSofaGain;
                         };
                         control = {
@@ -166,7 +185,6 @@
                         label = "mixer";
                         name = "mixL";
                         control = {
-                          scale = "linear";
                           # Set individual left mixer gain if needed
                           "Gain 1" = cfgMixLRGain;
                           "Gain 2" = cfgMixLRGain;
@@ -183,7 +201,6 @@
                         label = "mixer";
                         name = "mixR";
                         control = {
-                          scale = "linear";
                           # Set individual right mixer gain if needed
                           "Gain 1" = cfgMixLRGain;
                           "Gain 2" = cfgMixLRGain;
@@ -282,7 +299,7 @@
                   };
 
                   "capture.props" = {
-                    "node.name" = "effect_input.spatializer-virt-surround";
+                    "node.name" = "effect_input.virtSurround";
                     "media.class" = "Audio/Sink";
                     "audio.channels" = 8;
                     "audio.position" = [
@@ -298,7 +315,7 @@
                   };
 
                   "playback.props" = {
-                    "node.name" = "effect_output.spatializer-virt-surround";
+                    "node.name" = "effect_output.virtSurround";
                     "node.passive" = true;
                     "audio.channels" = 2;
                     "audio.position" = [
