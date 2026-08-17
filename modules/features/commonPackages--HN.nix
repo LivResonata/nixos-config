@@ -24,6 +24,9 @@
         # Office
         libreoffice-qt6-fresh
 
+        # Programming Languages
+        python314
+
         # Spelling Library
         harper
         hunspell
@@ -42,7 +45,6 @@
         qbittorrent
         showmethekey
         nixpkgs-track
-        wineWow64Packages.stable
       ];
     };
 
