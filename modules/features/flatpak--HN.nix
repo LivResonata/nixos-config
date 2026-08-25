@@ -74,6 +74,7 @@
             packages = [
               "com.usebottles.bottles" # Bottles
               "rocks.koreader.KOReader" # KOReader
+              "com.github.tchx84.Flatseal" # Flatseal
               "org.nickvision.tubeconverter" # Parabolic
               "com.obsproject.Studio.Plugin.OBSVkCapture" # OBS Vulkan Capture (for Bottles)
               "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/25.08" # MangoHud (for Bottles)

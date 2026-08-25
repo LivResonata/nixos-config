@@ -122,6 +122,7 @@
             qtwayland
             kcolorscheme
             ffmpegthumbs
+            kde-cli-tools
             qtimageformats
             dolphin-plugins
             pkgs.ffmpegthumbnailer
