@@ -92,11 +92,20 @@
             RADV_EXPERIMENTAL = "video_decode,video_encode"; # For video acceleration
             AMD_VULKAN_ICD = "RADV";
             MESA_SHADER_CACHE_MAX_SIZE = "12G";
+
+            # For OpenCL Support
+            ## See: https://wiki.nixos.org/wiki/DaVinci_Resolve#AMD
+            RUSTICL_ENABLE = "radeonsi";
           };
         };
 
         hardware = {
-          graphics.enable32Bit = true;
+          graphics = {
+            enable = true;
+            enable32Bit = true;
+
+            extraPackages = with pkgs; [ mesa.opencl ];
+          };
 
           amdgpu = {
             zluda.enable = true;

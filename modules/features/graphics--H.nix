@@ -5,11 +5,16 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        # Graphics
-        #krita
-        #krita-plugin-gmic
+        # 3D Modeling
+        blender
+
+        # Digital Art
         inkscape
         pixelorama
+
+        # Video Editing
+        davinci-resolve
+        kdePackages.kdenlive
       ];
     };
 }
