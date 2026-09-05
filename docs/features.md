@@ -203,7 +203,7 @@ These are modules that are expected to be added to per-host and per-user configu
 | samba          | |   | &check; |         |         | Contains Samba Share settings and user `guest`. |
 | shell          | |   | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
 | ssh            | |   | &check; | &check; |         | Contains SSH configurations. |
-| virtualisation | |   | &check; |         |         | Contains Docker, Virt-Manager, and Waydroid setups. |
+| virtualisation | |   | &check; |         | &check; | Contains Docker, Virt-Manager, and Waydroid setups. |
 
 ### Sub-modules
 

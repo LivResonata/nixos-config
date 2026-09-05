@@ -92,10 +92,13 @@
         ];
       };
 
-      # Custom feature module options
+      # Custom NixOS feature module options
+      ## Enable/Disable Options
       fonts.monochromeEmoji.enable = true;
       hardware.performance.dmemcg.enable = false;
       services.pipewire.virtSurround.enable = true;
+      virtualisation.features.waydroid.enable = false;
+      ## Strings and Other Types
       hardware.drawingTablet.platform = "opentabletdriver";
 
       # Standard options

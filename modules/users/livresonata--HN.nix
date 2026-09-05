@@ -41,6 +41,68 @@
         homeDirectory = "/home/livresonata";
       };
 
+      programs.zsh.shellAliases = lib.mkMerge [
+        {
+          backupUploadGDrive = ''
+            echo -n "Enter rclone config password: "
+            read -s pass
+            echo
+
+            RCLONE_CONFIG_PASS=$pass rclone sync "$HOME/Documents/Work" "gdrive-artwork:Backups/Work" --check-first --track-renames --update --create-empty-src-dirs -MvP --drive-skip-gdocs --fix-case &&
+
+            # Temporarily Disabled
+            #RCLONE_CONFIG_PASS=$pass rclone sync "$HOME/Documents/Artwork Projects" "gdrive-artwork:Backups/Artwork Projects" --check-first --track-renames --update --create-empty-src-dirs -MvP --drive-skip-gdocs --fix-case &&
+
+            unset pass
+            echo "Backup upload complete"
+          '';
+
+          clrKFXtemp = ''
+            echo "Clearing Kindle Previewer temporary files..."
+            rm -rf "/home/livresonata/.wine/drive_c/users/livresonata/AppData/Local/Temp" && echo "Sucessfully cleared temp files!"
+          '';
+
+          cls = ''
+            clear
+          '';
+
+          whatAppEject = ''
+            sudo lsof $1
+          '';
+
+          yth264 = ''
+            yt-dlp \
+              --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]" \
+              --format-sort "vcodec:h264" \
+              --downloader aria2c \
+              --no-embed-thumbnail \
+              --no-post-overwrites \
+              --no-write-description \
+              --no-write-info-json \
+              "$@"
+          '';
+        }
+
+        (lib.mkIf osConfig.virtualisation.waydroid.enable {
+          wss = ''
+            setsid waydroid session start >/dev/null 2>&1
+            setsid waydroid show-full-ui >/dev/null 2>&1
+            echo "[shell] Waydroid session started with showing full user interface"
+          '';
+
+          wsx = ''
+            waydroid session stop && echo "[shell] Waydroid session has been closed"
+          '';
+
+          wsu = ''
+            sudo waydroid upgrade || return 1
+            echo -e "\n[shell] Requesting root access for service restart"
+            notify-send -u critical "Waydroid Upgrade" "Requesting root access for service restart"
+            sudo systemctl restart waydroid-container.service || echo "[shell] Restart failed"
+          '';
+        })
+      ];
+
       services.flatpak.extraCategories = [
         "audio"
         "gaming"
