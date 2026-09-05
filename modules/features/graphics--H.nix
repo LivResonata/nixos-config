@@ -13,7 +13,6 @@
         pixelorama
 
         # Video Editing
-        davinci-resolve
         kdePackages.kdenlive
       ];
     };

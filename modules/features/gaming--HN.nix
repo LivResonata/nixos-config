@@ -8,6 +8,7 @@
         # Emulators
         mesen
         ppsspp
+        vita3k
         melonds
 
         # Games

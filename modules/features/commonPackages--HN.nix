@@ -18,7 +18,6 @@
         rmpc # Requires `services.mpd.enable`.
         calibre
         qpwgraph
-        mpd-mpris
         webcamoid
 
         # Office
