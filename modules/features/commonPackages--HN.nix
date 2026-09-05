@@ -21,7 +21,7 @@
         webcamoid
 
         # Office
-        libreoffice-qt6-fresh
+        libreoffice-qt-stable
 
         # Programming Languages
         python314
