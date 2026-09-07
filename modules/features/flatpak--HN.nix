@@ -90,6 +90,7 @@
             ]
             ++ lib.optionals (lib.lists.any (cat: lib.strings.hasInfix "graphics" cat) cfg.extraCategories) [
               "org.kde.krita" # Krita
+              "org.inkscape.Inkscape" # Inkscape
             ]
             ++ lib.optionals (lib.lists.any (cat: lib.strings.hasInfix "noctalia" cat) cfg.extraCategories) [
               "org.gtk.Gtk3theme.adw-gtk3" # adw-gtk3 GTK Theme
