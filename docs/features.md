@@ -179,31 +179,32 @@ Filename syntax: `moduleFeatureName--HN.nix`
 
 These are modules that are expected to be added to per-host and per-user configurations. Those in folders can be parent modules which have their own automatically imported sub-modules.
 
-| Module Name    | Has sub-modules | Folder | NixOS | Home Manager | Has Options | Description |
-| ---------------| --------------- | ------ | ----- | ------------ | ----------- | ----------- |
-| audio          | &check; | ./audio              | &check; |         |         | Pipewire, Quantum, and VirtSurround. | 
-| niri           |         | ./desktopEnvironment | &check; |         |         | Niri with Noctalia Shell. |
-| plasma         |         | ./desktopEnvironment | &check; |         |         | KDE Plasma with Plasma Login Manager. |
-| amdgpu         |         | ./hardware           | &check; |         | &check; | AMDGPU graphic defaults and PPFeatureMask safeties. |
-| theming        | &check; | ./theming            |         | &check; |         | Cursor, font options, icon packs, and Stylix options. |
-| antivirus      | |   | &check; |         |         | ClamAV daemon without auto-scanning. |
-| browsers       | |   |         | &check; |         | Contains web browsers. |
-| commonPrograms | |   | &check; | &check; |         | Non-categorized program set. |
-| commonPackages | |   | &check; | &check; |         | Non-categorized package set. |
-| commonServices | |   | &check; | &check; |         | Non-categorized service set. |
-| drawingTablet  | |   | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
-| editor         | |   | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
-| flatpak        | |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
-| fonts          | |   | &check; |         | &check; | Contains font packages and options outside theming modules. |
-| gaming         | |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
-| git            | |   | &check; | &check; |         | Enables Git and repository management utilities. |
-| graphics       | |   |         | &check; |         | Contains packages for graphic design and art. |
-| inputMethod    | |   |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
-| performance    | |   | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
-| samba          | |   | &check; |         |         | Contains Samba Share settings and user `guest`. |
-| shell          | |   | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
-| ssh            | |   | &check; | &check; |         | Contains SSH configurations. |
-| virtualisation | |   | &check; |         | &check; | Contains Docker, Virt-Manager, and Waydroid setups. |
+| Module Name     | Has sub-modules | Folder | NixOS | Home Manager | Has Options | Description |
+| --------------- | --------------- | ------ | ----- | ------------ | ----------- | ----------- |
+| audio           | &check; | ./audio              | &check; |         |         | Pipewire, Quantum, and VirtSurround. | 
+| niri            |         | ./desktopEnvironment | &check; |         |         | Niri, a scrolling window manager. |
+| plasma          |         | ./desktopEnvironment | &check; |         |         | KDE Plasma with Plasma Login Manager. |
+| noctaliaWithKDE |         | ./desktopEnvironment/add-ons | &check; |         | &check; | Noctalia Shell and Greeter with KDE applications. |
+| amdgpu          |         | ./hardware           | &check; |         | &check; | AMDGPU graphic defaults and PPFeatureMask safeties. |
+| theming         | &check; | ./theming            |         | &check; |         | Cursor, font options, icon packs, and Stylix options. |
+| antivirus       | |   | &check; |         |         | ClamAV daemon without auto-scanning. |
+| browsers        | |   |         | &check; |         | Contains web browsers. |
+| commonPrograms  | |   | &check; | &check; |         | Non-categorized program set. |
+| commonPackages  | |   | &check; | &check; |         | Non-categorized package set. |
+| commonServices  | |   | &check; | &check; |         | Non-categorized service set. |
+| drawingTablet   | |   | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
+| editor          | |   | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
+| flatpak         | |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
+| fonts           | |   | &check; |         | &check; | Contains font packages and options outside theming modules. |
+| gaming          | |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
+| git             | |   | &check; | &check; |         | Enables Git and repository management utilities. |
+| graphics        | |   |         | &check; |         | Contains packages for graphic design and art. |
+| inputMethod     | |   |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
+| performance     | |   | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
+| samba           | |   | &check; |         |         | Contains Samba Share settings and user `guest`. |
+| shell           | |   | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
+| ssh             | |   | &check; | &check; |         | Contains SSH configurations. |
+| virtualisation  | |   | &check; |         | &check; | Contains Docker, Virt-Manager, and Waydroid setups. |
 
 ### Sub-modules
 
