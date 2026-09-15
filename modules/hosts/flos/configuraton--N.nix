@@ -32,6 +32,7 @@
           ## In order of ascending folder-file names.
           audio # folder: audio
           noctaliaWithKDE # folder: desktopEnvironment/add-ons
+          mango # folder: desktopEnvironment
           niri # folder: desktopEnvironment
           # plasma # folder: desktopEnvironment
           amdgpu # folder: hardware
