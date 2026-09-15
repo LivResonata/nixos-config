@@ -24,6 +24,14 @@
           '';
           ## See: https://mangowm.github.io/docs/configuration/monitors#graphics-card-compatibility
         };
+
+        withUWSM.enable = lib.mkEnableOption null // {
+          default = false;
+          exmaple = true;
+          description = ''
+            Launch Mango with the UWSM (Universal Wayland Session Manager).
+          '';
+        };
       };
 
       imports = [
@@ -37,7 +45,23 @@
           })
         ];
 
-        programs.mango.enable = true;
+        programs = lib.mkMerge [
+          {
+            mango.enable = true;
+          }
+
+          (lib.mkIf cfg.withUWSM.enable {
+            uwsm = {
+              enable = true;
+
+              waylandCompositors.mango = {
+                prettyName = "Mango";
+                comment = "Mango compositor managed by UWSM";
+                binPath = "/run/current-system/sw/bin/mango";
+              };
+            };
+          })
+        ];
 
         services.gnome.gnome-keyring.enable = true; # Defaults uses the `gnome-keyring`.
 

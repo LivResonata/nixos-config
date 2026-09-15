@@ -93,6 +93,7 @@
       # Custom NixOS feature module options
       ## Enable/Disable Options
       fonts.monochromeEmoji.enable = true;
+      programs.mango.withUWSM.enable = true;
       hardware.performance.dmemcg.enable = false;
       services.pipewire.virtSurround.enable = true;
       virtualisation.features.waydroid.enable = false;
