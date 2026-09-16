@@ -39,6 +39,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## Mango - A fast, feature-rich Wayland compositor built on dwl.
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ## Nixcord - Declarative Vencord plugins and options
     nixcord.url = "github:4evy/nixcord";
 

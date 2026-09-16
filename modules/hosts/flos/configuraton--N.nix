@@ -31,6 +31,8 @@
           # Features
           ## In order of ascending folder-file names.
           audio # folder: audio
+          noctaliaWithKDE # folder: desktopEnvironment/add-ons
+          mango # folder: desktopEnvironment
           niri # folder: desktopEnvironment
           # plasma # folder: desktopEnvironment
           amdgpu # folder: hardware
@@ -77,17 +79,13 @@
         ];
 
         # Binary Caches
-        ## Noctalia Shell
-        ### See: https://docs.noctalia.dev/v5/getting-started/nixos/?section=binary-cache#binary-cache
         ## Nix-CachyOS-Kernel (xuyh0120/Lantian)
         ### See: https://github.com/xddxdd/nix-cachyos-kernel#binary-cache
         extra-substituters = [
-          "https://noctalia.cachix.org"
           "https://attic.xuyh0120.win/lantian"
         ];
 
         extra-trusted-public-keys = [
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
           "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         ];
       };
@@ -95,6 +93,7 @@
       # Custom NixOS feature module options
       ## Enable/Disable Options
       fonts.monochromeEmoji.enable = true;
+      programs.mango.withUWSM.enable = true;
       hardware.performance.dmemcg.enable = false;
       services.pipewire.virtSurround.enable = true;
       virtualisation.features.waydroid.enable = false;

@@ -56,6 +56,7 @@
           # Wayland
           wl-clipboard
           wayland-utils
+          wl-clipboard-x11
 
           # Archival Utilities
           zip
