@@ -50,8 +50,8 @@
             # To solve non-functioning clipboard on XWayland apps.
             ## Run with autostart command: `wl-paste --type text --watch xclip -selection clipboard`
             ## See: https://github.com/mangowm/mango/issues/522
+            xclip
             wl-clipboard
-            wl-clipboard-x11
           ];
         };
 
