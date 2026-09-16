@@ -39,11 +39,21 @@
       ];
 
       config = {
-        environment.sessionVariables = lib.mkMerge [
-          (lib.mkIf cfg.graphicsCompatibility.enable {
-            "WLR_DRM_NO_ATOMIC" = 1;
-          })
-        ];
+        environment = {
+          sessionVariables = lib.mkMerge [
+            (lib.mkIf cfg.graphicsCompatibility.enable {
+              "WLR_DRM_NO_ATOMIC" = 1;
+            })
+          ];
+
+          systemPackages = with pkgs; [
+            # To solve non-functioning clipboard on XWayland apps.
+            ## Run with autostart command: `wl-paste --type text --watch xclip -selection clipboard`
+            ## See: https://github.com/mangowm/mango/issues/522
+            wl-clipboard
+            wl-clipboard-x11
+          ];
+        };
 
         programs = lib.mkMerge [
           {
