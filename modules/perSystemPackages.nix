@@ -22,5 +22,8 @@
       packages.veikk-driver-gui =
         pkgs.callPackage ../pkgs/by-name/veikk-driver-gui/veikk-driver-gui.nix
           { };
+      packages.xwayland-satellite-patched =
+        pkgs.callPackage ../pkgs/by-name/xwayland-satellite-patched/xwayland-satellite.nix
+          { };
     };
 }
