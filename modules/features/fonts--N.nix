@@ -32,15 +32,13 @@
             antialias = false; # Not needed for >200 DPI/PPI displays.
             useEmbeddedBitmaps = true;
 
-            # TODO: Revamp theming modularity alongside Stylix if these are customized. This seems out-of-place.
+            # Require `lib.mkDefault` in cases of personalization via another module.
             defaultFonts = {
               emoji = lib.mkDefault [ (if cfg.monochromeEmoji.enable then "Noto Emoji" else "Noto Color Emoji") ];
               monospace = lib.mkDefault [
-                "DepartureMono Nerd Font Mono Propo"
                 "Adwaita Mono"
               ];
               sansSerif = lib.mkDefault [
-                "DepartureMono Nerd Font Mono Propo"
                 "Adwaita Sans"
               ];
               serif = lib.mkDefault [ "Noto Serif" ];
