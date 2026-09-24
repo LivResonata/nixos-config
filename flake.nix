@@ -20,6 +20,9 @@
     };
 
     # Package Repositories
+    ## Chaotic-Nyx - https://github.com/chaotic-cx/nyx
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     ## NixOS Official Repos
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 

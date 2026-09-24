@@ -56,13 +56,16 @@
     );
 
   flake.nixosModules.flosConfiguration =
-    { ... }:
+    { lib, pkgs, ... }:
     let
       sensitivesSecretsPath = toString inputs.sensitivesSecrets;
     in
     {
       imports = [
         inputs.sops-nix.nixosModules.sops
+
+        # Globally use Chaotic-Nyx
+        inputs.chaotic.nixosModules.default
       ];
 
       nixpkgs.config.allowUnfree = true;
@@ -98,6 +101,7 @@
       services.pipewire.virtSurround.enable = true;
       virtualisation.features.waydroid.enable = false;
       ## Strings and Other Types
+      programs.niri.package = lib.mkForce pkgs.niri_git; # Provided from Chaotic-Nyx.
       hardware.drawingTablet.platform = "opentabletdriver";
 
       # Standard options
