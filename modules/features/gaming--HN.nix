@@ -96,11 +96,6 @@
           remotePlay.openFirewall = true; # Steam Remote Play
           dedicatedServer.openFirewall = true; # Source Dedicated Server
           localNetworkGameTransfers.openFirewall = true; # Steam Local Network Game Transfers
-
-          extraCompatPackages = with pkgs; [
-            proton-ge-bin
-            packages.dwproton
-          ];
         };
       };
     };
