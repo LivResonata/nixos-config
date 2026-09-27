@@ -43,11 +43,7 @@
     };
 
   flake.nixosModules.gaming =
-    {
-      packages,
-      pkgs,
-      ...
-    }:
+    { ... }:
     {
       boot.kernelModules = [ "ntsync" ];
 
