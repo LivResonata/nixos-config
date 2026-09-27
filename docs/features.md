@@ -183,6 +183,7 @@ These are modules that are expected to be added to per-host and per-user configu
 | --------------- | --------------- | ------ | ----- | ------------ | ----------- | ----------- |
 | audio           | &check; | ./audio              | &check; |         |         | Pipewire, Quantum, and VirtSurround. | 
 | niri            |         | ./desktopEnvironment | &check; |         |         | Niri, a scrolling window manager. |
+| gnome           |         | ./desktopEnvironment | &check; |         |         | GNOME Desktop with GDM. |
 | mango           |         | ./desktopEnvironment | &check; |         | &check; | Mango, a fast, feature-rich Wayland compositor built on dwl. |
 | plasma          |         | ./desktopEnvironment | &check; |         |         | KDE Plasma with Plasma Login Manager. |
 | noctaliaWithKDE |         | ./desktopEnvironment/add-ons | &check; |         | &check; | Noctalia Shell and Greeter with KDE applications. |

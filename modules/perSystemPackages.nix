@@ -17,6 +17,7 @@
       packages.plasma-foreground-booster = pkgs.plasma-foreground-booster;
 
       # Packages
+      packages.refine = pkgs.callPackage ../pkgs/by-name/refine/refine.nix { };
       packages.dwproton = pkgs.callPackage ../pkgs/by-name/dwproton/dwproton.nix { };
       packages.niri-patched = pkgs.callPackage ../pkgs/by-name/niri-patched/niri-patched.nix { };
       packages.veikk-driver-gui =
