@@ -51,7 +51,7 @@
 
             subpixel = {
               rgba = "rgb";
-              lcdfilter = "none"; # Also not needed for >200 DPI/PPI displays.
+              lcdfilter = "default"; # Not needed for >200 DPI/PPI displays, set to "none" if so.
             };
           };
 
