@@ -86,6 +86,7 @@
             ]
             ++ lib.optionals (lib.lists.any (cat: lib.strings.hasInfix "gaming" cat) cfg.extraCategories) [
               "sh.ppy.osu" # osu! (Unofficial package)
+              "org.vinegarhq.Sober" # Sober (Roblox Port)
               "com.vysp3r.ProtonPlus" # ProtonPlus
               "com.github.Matoking.protontricks" # Protontricks
             ]
