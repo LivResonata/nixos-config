@@ -89,8 +89,8 @@
 
             ananicy = {
               enable = true;
-              package = pkgs.ananicy-rules-cachyos_git; # Provided by Chaotic-Nyx
-              rulesProvider = pkgs.ananicy-rules-cachyos;
+              package = pkgs.ananicy-cpp;
+              rulesProvider = pkgs.ananicy-rules-cachyos_git; # Provided by Chaotic-Nyx
             };
 
             # Preload-NG Docs
