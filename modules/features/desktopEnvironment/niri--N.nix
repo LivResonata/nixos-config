@@ -13,12 +13,9 @@
       ...
     }:
     {
-      environment.systemPackages = [
+      environment.systemPackages = with pkgs; [
         ## Required Packages
-        ### FIX: Remove patched package once PR #564273 in `github:NixOS/nixpkgs` is merged and is in the `nixos-unstable` repository.
-        ### See: https://github.com/NixOS/nixpkgs/pull/564273
-        ###      https://github.com/Supreeeme/xwayland-satellite/pull/494
-        packages.xwayland-satellite-patched
+        xwayland-satellite
 
         ## Superseded Requirements
         #nautilus # Preferred file manager is `pkgs.kdePackages.dolphin`, included in `noctaliaWithKDE` module.
