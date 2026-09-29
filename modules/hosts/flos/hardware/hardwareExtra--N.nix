@@ -2,8 +2,13 @@
 
 {
   flake.nixosModules.flosHardwareExtra =
-    { ... }:
+    { pkgs, ... }:
     {
+      nixpkgs.overlays = [
+        # Use the exact nixpkgs revision as defined in the nix-cachyos-kernel repo to ensure binary cache hits.
+        inputs.nix-cachyos-kernel.overlays.pinned
+      ];
+
       boot = {
         plymouth.enable = false;
 
@@ -18,13 +23,13 @@
           };
         };
 
-        kernelPackages =
-          inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-latest-x86_64-v3;
+        kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
         kernelParams = [
           # Prevent soft lock freezing
           ## Note: Unsure if this is needed to keep.
           ## See: https://wiki.archlinux.org/title/Ryzen#Soft_lock_freezing
-          "rcu_nocbs=0-3"
+          ### WARN: Temporarily disabled for testing. If confirmed redundant, remove this parameter.
+          # "rcu_nocbs=0-3"
         ];
 
         kernelModules = [ "nct6683" ];

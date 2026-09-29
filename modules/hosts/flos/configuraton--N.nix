@@ -81,17 +81,6 @@
           "flakes"
           "cgroups"
         ];
-
-        # Binary Caches
-        ## Nix-CachyOS-Kernel (xuyh0120/Lantian)
-        ### See: https://github.com/xddxdd/nix-cachyos-kernel#binary-cache
-        extra-substituters = [
-          "https://attic.xuyh0120.win/lantian"
-        ];
-
-        extra-trusted-public-keys = [
-          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-        ];
       };
 
       # Custom NixOS feature module options
