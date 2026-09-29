@@ -88,8 +88,8 @@
             power-profiles-daemon.enable = true;
 
             ananicy = {
-              enable = false; # Currently broken. Enable once fixed, no bug report yet.
-              package = pkgs.ananicy-cpp;
+              enable = true;
+              package = pkgs.ananicy-rules-cachyos_git; # Provided by Chaotic-Nyx
               rulesProvider = pkgs.ananicy-rules-cachyos;
             };
 
@@ -101,10 +101,10 @@
             };
 
             scx = {
-              enable = false; # Use CachyOS kernel's default EEVDF CPU scheduler for now.
+              enable = lib.mkDefault true;
               package = pkgs.scx.rustscheds;
               scheduler = "scx_cake";
-              extraArgs = [ "--profile gaming" ];
+              extraArgs = [ ];
             };
           };
 
