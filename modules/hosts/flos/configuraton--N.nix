@@ -20,7 +20,6 @@
 
         modules = with self.nixosModules; [
           # Host Configuration
-          flosNetworking
           flosHardwareAuto
           flosHardwareExtra
           flosConfiguration
@@ -47,6 +46,7 @@
           fonts
           gaming
           git
+          networking
           performance
           samba
           shell
@@ -85,6 +85,7 @@
 
       # Custom NixOS feature module options
       ## Enable/Disable Options
+      programs.protonvpn.enable = true;
       fonts.monochromeEmoji.enable = true;
       programs.mango.withUWSM.enable = true;
       hardware.performance.dmemcg.enable = false;
@@ -99,6 +100,8 @@
         # Setting Wayland automatically in apps
         NIXOS_OZONE_WL = 1; # For Chromium and Electron
       };
+
+      networking.hostName = "flos";
 
       # Unsure if this should be host-centric or modular in "./modules/features".
       sops = {
