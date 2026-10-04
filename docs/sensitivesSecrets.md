@@ -29,8 +29,8 @@
 | /flake.nix | Flake |
 | ./modules/features/browsers\--H.nix | Features |
 | ./modules/features/flatpak\--HN.nix | Features |
+| ./modules/features/networking\--N.nix | Features |
 | ./modules/hosts/flos/configuration\--N.nix | NixOS Host Configuration |
-| ./modules/hosts/flos/networking\--N.nix | NixOS Host Modules |
 | ./modules/users/livresonata\--HN.nix | User Setup Modules |
 
 And here's a reference regarding what code to modify or remove:
