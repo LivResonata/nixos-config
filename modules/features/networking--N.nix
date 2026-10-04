@@ -82,9 +82,77 @@
           ];
 
         networking = {
+          nftables.enable = true;
+
+          firewall = lib.mkMerge [
+            {
+              enable = true;
+              allowPing = true;
+
+              # This option has a notable effect on VPN services. Use 'loose' if needed.
+              ## Values: "strict" / true, "loose" (default), false
+              checkReversePath = "loose";
+
+              # Logging
+              ## Disable logs to clean up the journal since I don't
+              ## read them anyways. Prevents bad screenshots.
+              logRefusedConnections = false;
+
+              # For use with `networking.nftables.enable = true` only
+              ## extraInputRules, filterForward, extraForwardRules
+              extraInputRules =
+                sensitivesSecretsData.networking.${config.networking.hostName}.firewall.extraInputRules;
+
+              # Ports
+              ## mDNS = udp[ 5353 ], tcp[ 5353 ]
+              ## Scrcpy = udp[ X ], tcp[ 5037 ]
+              ## Seanime = udp[ 43211 ], tcp[ 43211 ]
+
+              allowedUDPPorts = [
+                5353 # mDNS
+                43211 # Seanime
+              ];
+
+              allowedTCPPorts = [
+                5353 # mDNS
+                5037 # Scrcpy
+                43211 # Seanime
+              ];
+            }
+
+            (lib.mkIf cfg.protonvpn.enable {
+              allowedUDPPorts = [
+                # OpenVPN
+                80
+                1194
+                4569
+                5060
+
+                # WireGuard
+                88
+                443
+                500
+                1224
+                4500
+
+                # Both OpenVPN and WireGuard
+                51820
+              ];
+
+              allowedTCPPorts = [
+                # OpenVPN
+                7770
+                8443
+
+                # Both OpenVPN and WireGuard
+                443
+              ];
+            })
+          ];
+
           networkmanager = {
             enable = true;
-            dns = lib.mkDefault "none";
+            dns = "systemd-resolved";
 
             plugins =
               with pkgs;

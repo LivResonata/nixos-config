@@ -20,7 +20,6 @@
 
         modules = with self.nixosModules; [
           # Host Configuration
-          flosNetworking
           flosHardwareAuto
           flosHardwareExtra
           flosConfiguration
@@ -101,6 +100,8 @@
         # Setting Wayland automatically in apps
         NIXOS_OZONE_WL = 1; # For Chromium and Electron
       };
+
+      networking.hostName = "flos";
 
       # Unsure if this should be host-centric or modular in "./modules/features".
       sops = {

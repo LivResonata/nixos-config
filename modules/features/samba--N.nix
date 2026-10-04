@@ -2,14 +2,29 @@
 
 {
   flake.nixosModules.samba =
-    { config, pkgs, ... }:
     {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      networking.firewall = {
+        allowedUDPPorts = [ 445 ]; # Microsoft-DS SMB file sharing (UDP)
+        allowedTCPPorts = [ 445 ]; # Microsoft-DS Active Directory, Windows shares (TCP)
+      };
+
       services.samba = {
         enable = true;
         package = pkgs.samba;
 
-        # Opens udp[ 137 138 ], tcp[ 139 445 ]
-        openFirewall = true;
+        /*
+          WARN: NetBIOS ports are legacy and may be insecure: udp[ 137 138 ], tcp[ 139].
+
+          See: https://wiki.centos.org/HowTos(2f)SetUpSamba.html
+        */
+        # Opens udp[ 137 138 ], tcp[ 139 445 ].
+        openFirewall = lib.mkForce false;
 
         settings = {
           global = {
