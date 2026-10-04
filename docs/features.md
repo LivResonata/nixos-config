@@ -189,24 +189,25 @@ These are modules that are expected to be added to per-host and per-user configu
 | noctaliaWithKDE |         | ./desktopEnvironment/add-ons | &check; |         | &check; | Noctalia Shell and Greeter with KDE applications. |
 | amdgpu          |         | ./hardware           | &check; |         | &check; | AMDGPU graphic defaults and PPFeatureMask safeties. |
 | theming         | &check; | ./theming            |         | &check; |         | Cursor, font options, icon packs, and Stylix options. |
-| antivirus       | |   | &check; |         |         | ClamAV daemon without auto-scanning. |
-| browsers        | |   |         | &check; |         | Contains web browsers. |
-| commonPrograms  | |   | &check; | &check; |         | Non-categorized program set. |
-| commonPackages  | |   | &check; | &check; |         | Non-categorized package set. |
-| commonServices  | |   | &check; | &check; |         | Non-categorized service set. |
-| drawingTablet   | |   | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
-| editor          | |   | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
-| flatpak         | |   | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
-| fonts           | |   | &check; |         | &check; | Contains font packages and options outside theming modules. |
-| gaming          | |   | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
-| git             | |   | &check; | &check; |         | Enables Git and repository management utilities. |
-| graphics        | |   |         | &check; |         | Contains packages for graphic design and art. |
-| inputMethod     | |   |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
-| performance     | |   | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
-| samba           | |   | &check; |         |         | Contains Samba Share settings and user `guest`. |
-| shell           | |   | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
-| ssh             | |   | &check; | &check; |         | Contains SSH configurations. |
-| virtualisation  | |   | &check; |         | &check; | Contains Docker, Virt-Manager, and Waydroid setups. |
+| antivirus       | | | &check; |         |         | ClamAV daemon without auto-scanning. |
+| browsers        | | |         | &check; |         | Contains web browsers. |
+| commonPrograms  | | | &check; | &check; |         | Non-categorized program set. |
+| commonPackages  | | | &check; | &check; |         | Non-categorized package set. |
+| commonServices  | | | &check; | &check; |         | Non-categorized service set. |
+| drawingTablet   | | | &check; |         | &check; | OpenTabletDriver and VEIKK driver. |
+| editor          | | | &check; | &check; |         | Contains text editors with more configurations for Home Manager. |
+| flatpak         | | | &check; | &check; | &check; | Enables Flatpak and has its own package categories to be set per-user. |
+| fonts           | | | &check; |         | &check; | Contains font packages and options outside theming modules. |
+| gaming          | | | &check; | &check; |         | Per-user and system-level game packages alongside Proton configurations. |
+| git             | | | &check; | &check; |         | Enables Git and repository management utilities. |
+| graphics        | | |         | &check; |         | Contains packages for graphic design and art. |
+| inputMethod     | | |         | &check; |         | i18n and Fcitx5 with Mozc for Japanese IME. |
+| networking      | | | &check; |         | &check; | Provides DNS service, firewall, and VPN program. |
+| performance     | | | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
+| samba           | | | &check; |         |         | Contains Samba Share settings and user `guest`. |
+| shell           | | | &check; | &check; |         | Utilizes ZSH, Starship, and holds shell aliases. |
+| ssh             | | | &check; | &check; |         | Contains SSH configurations. |
+| virtualisation  | | | &check; |         | &check; | Contains Docker, Virt-Manager, and Waydroid setups. |
 
 ### Sub-modules
 

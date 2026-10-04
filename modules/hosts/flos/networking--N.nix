@@ -5,7 +5,7 @@
   # TODO: Evaluate and move any code that is better suited to be modular.
 
   flake.nixosModules.flosNetworking =
-    { config, pkgs, ... }:
+    { config, ... }:
     let
       sensitivesSecretsPath = toString inputs.sensitivesSecrets;
       sensitivesSecretsData = builtins.fromJSON (
@@ -13,19 +13,8 @@
       );
     in
     {
-      environment.systemPackages = with pkgs; [
-        # VPN
-        proton-vpn
-
-        # Backends
-        openvpn
-        wireguard-tools
-        update-resolv-conf
-      ];
-
       networking = {
         hostName = "flos";
-        nameservers = [ "" ];
         nftables.enable = true;
 
         firewall = {
@@ -111,36 +100,6 @@
             iifname "waydroid0" accept
             oifname "waydroid0" accept
           '';
-        };
-
-        networkmanager = {
-          enable = true;
-
-          plugins = with pkgs; [
-            networkmanager-openvpn
-          ];
-
-          settings = {
-            main = {
-              firewallBackend = "nftables";
-            };
-          };
-        };
-      };
-
-      services = {
-        resolved = {
-          enable = true;
-
-          settings.Resolve = {
-            DNSSEC = "allow-downgrade";
-            Domains = [ "~." ];
-            DNSOverTLS = true;
-            MulticastDNS = true;
-
-            DNS = sensitivesSecretsData.networking.${config.networking.hostName}.dns.systemd-resolved;
-            FallbackDNS = "94.140.14.15#family.adguard-dns.com 94.140.15.16#family.adguard-dns.com 2a10:50c0::bad1:ff#family.adguard-dns.com 2a10:50c0::bad2:ff#family.adguard-dns.com";
-          };
         };
       };
     };
