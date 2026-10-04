@@ -56,20 +56,21 @@
             Does not support DNS-over-TLS. Disable or tweak the relevant option in your DNS service.
             Recommend to use `networking.dnsService = "dnscrypt-proxy"` as its sensitiveSecrets stamp doesn't use DoT.
           '';
-
-          apply =
-            vpn:
-            if
-              config.networking.dnsService == "system-resolved"
-              && config.services.resolved.settings.Resolve.DNSOverTLS
-            then
-              abort "`systemd-resolved` has DNS-over-TLS enabled. ProtonVPN does not support it and will malfunction."
-            else
-              vpn;
         };
       };
 
       config = {
+        assertions = lib.mkIf config.programs.protonvpn.enable [
+          {
+            assertion =
+              !(
+                config.networking.dnsService == "systemd-resolved"
+                && config.services.resolved.settings.Resolve.DNSOverTLS == true
+              );
+            message = "`systemd-resolved` has DNS-over-TLS enabled. ProtonVPN does not support it and will malfunction.";
+          }
+        ];
+
         environment.systemPackages =
           with pkgs;
           [ ]

@@ -34,7 +34,7 @@
                   && config.networking.hostName == "flos"
                 )
               )
-              # Both checks must be `true` which states the values are within set safety. Else, assert.
+              # Both checks must be `true` which states the values are within set safety. Else, failed assert.
               &&
                 # Checks if `boot.kernelParams` list of strings matches either the default or the host-only setting.
                 ## Any other module can add another or its own PPFeatureMask outside of this module.
