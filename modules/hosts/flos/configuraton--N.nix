@@ -85,7 +85,7 @@
 
       # Custom NixOS feature module options
       ## Enable/Disable Options
-      networking.protonvpn.enable = true;
+      programs.protonvpn.enable = true;
       fonts.monochromeEmoji.enable = true;
       programs.mango.withUWSM.enable = true;
       hardware.performance.dmemcg.enable = false;

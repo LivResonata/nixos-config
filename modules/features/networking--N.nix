@@ -10,7 +10,6 @@
     }:
     let
       # For Options
-      cfg = config.networking;
       dnsServiceList = [
         "dnscrypt-proxy"
         "systemd-resolved"
@@ -23,8 +22,8 @@
       );
     in
     {
-      options.networking = {
-        dnsService = lib.mkOption {
+      options = {
+        networking.dnsService = lib.mkOption {
           type = lib.types.str;
           default = "dnscrypt-proxy";
           example = "systemd-resolved";
@@ -48,7 +47,7 @@
               dns;
         };
 
-        protonvpn.enable = lib.mkEnableOption null // {
+        programs.protonvpn.enable = lib.mkEnableOption null // {
           default = false;
           example = true;
           description = ''
@@ -60,7 +59,10 @@
 
           apply =
             vpn:
-            if cfg.dnsService == "system-resolved" && config.services.resolved.settings.Resolve.DNSOverTLS then
+            if
+              config.networking.dnsService == "system-resolved"
+              && config.services.resolved.settings.Resolve.DNSOverTLS
+            then
               abort "`systemd-resolved` has DNS-over-TLS enabled. ProtonVPN does not support it and will malfunction."
             else
               vpn;
@@ -71,7 +73,7 @@
         environment.systemPackages =
           with pkgs;
           [ ]
-          ++ lib.optionals cfg.protonvpn.enable [
+          ++ lib.optionals config.programs.protonvpn.enable [
             # VPN
             proton-vpn
 
@@ -120,7 +122,7 @@
               ];
             }
 
-            (lib.mkIf cfg.protonvpn.enable {
+            (lib.mkIf config.programs.protonvpn.enable {
               allowedUDPPorts = [
                 # OpenVPN
                 80
@@ -157,7 +159,7 @@
             plugins =
               with pkgs;
               [ ]
-              ++ lib.optionals cfg.protonvpn.enable [
+              ++ lib.optionals config.programs.protonvpn.enable [
                 networkmanager-openvpn
               ];
 
@@ -171,7 +173,7 @@
 
         services = {
           dnscrypt-proxy = {
-            enable = if cfg.dnsService == "dnscrypt-proxy" then true else false;
+            enable = if config.networking.dnsService == "dnscrypt-proxy" then true else false;
 
             # For options, see: https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
             settings = {
@@ -236,13 +238,13 @@
                 DNSStubListener = true; # Values: `true` (both tcp and udp), `"tcp"`, `"udp"`, false; listens to 127.0.0.53/54:53.
               }
 
-              (lib.mkIf (cfg.dnsService == "dnscrypt-proxy") {
+              (lib.mkIf (config.networking.dnsService == "dnscrypt-proxy") {
                 DNS = "127.0.0.1:54 [::1]:54";
                 DNSOverTLS = false; # Values: `true`, `"opportunistic", or `false`.
                 CacheFromLocalhost = true; # Cache localhost DNS forwarding to DNSCrypt Proxy which has no caching enabled.
               })
 
-              (lib.mkIf (cfg.dnsService == "systemd-resolved") {
+              (lib.mkIf (config.networking.dnsService == "systemd-resolved") {
                 DNS = sensitivesSecretsData.networking.${config.networking.hostName}.dns.systemd-resolved;
                 DNSOverTLS = true; # Values: `true`, `"opportunistic", or `false`.
                 CacheFromLocalhost = false;
