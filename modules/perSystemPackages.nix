@@ -18,13 +18,9 @@
 
       # Packages
       packages.refine = pkgs.callPackage ../pkgs/by-name/refine/refine.nix { };
-      packages.dwproton = pkgs.callPackage ../pkgs/by-name/dwproton/dwproton.nix { };
       packages.niri-patched = pkgs.callPackage ../pkgs/by-name/niri-patched/niri-patched.nix { };
       packages.veikk-driver-gui =
         pkgs.callPackage ../pkgs/by-name/veikk-driver-gui/veikk-driver-gui.nix
-          { };
-      packages.xwayland-satellite-patched =
-        pkgs.callPackage ../pkgs/by-name/xwayland-satellite-patched/xwayland-satellite.nix
           { };
     };
 }
