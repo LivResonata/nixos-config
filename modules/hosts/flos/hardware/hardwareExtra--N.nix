@@ -25,11 +25,9 @@
 
         kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
         kernelParams = [
-          # Prevent soft lock freezing
-          ## Note: Unsure if this is needed to keep.
-          ## See: https://wiki.archlinux.org/title/Ryzen#Soft_lock_freezing
-          ### WARN: Temporarily disabled for testing. If confirmed redundant, remove this parameter.
-          # "rcu_nocbs=0-3"
+          # RCU Lazy - Helps reducing the power usage at idle or lightly loaded systems
+          ## See: https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy
+          "rcutree.enable_rcu_lazy=1"
         ];
 
         kernelModules = [ "nct6683" ];
