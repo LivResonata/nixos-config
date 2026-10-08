@@ -25,13 +25,15 @@
       options = {
         networking.dnsService = lib.mkOption {
           type = lib.types.str;
-          default = "dnscrypt-proxy";
-          example = "systemd-resolved";
+          default = "systemd-resolved";
+          example = "dnscrypt-proxy";
           description = ''
             Selects which DNS service is used for resolution.
 
-            - `dnscrypt-proxy`: handles DNS resolution while `systemd-resolved` for mDNS and caching.
-            - `systemd-resolved`: uses DNS-over-TLS for resolution alongside mDNS.
+            - `dnscrypt-proxy`: handles DNS resolution while `systemd-resolved` for caching, mDNS, and application compatibility.
+            Warning: Currenly unstable due to occassional "degraded feature set" issue with systemd-resolved.
+
+            - `systemd-resolved`: for resolution alongside mDNS. Uses DNS-over-TLS if it detects support in the set DNS server.
           '';
 
           apply =
@@ -54,21 +56,28 @@
             Installs ProtonVPN and recommended packages.
 
             Does not support DNS-over-TLS. Disable or tweak the relevant option in your DNS service.
-            Recommend to use `networking.dnsService = "dnscrypt-proxy"` as its sensitiveSecrets stamp doesn't use DoT.
           '';
         };
       };
 
       config = {
-        assertions = lib.mkIf config.programs.protonvpn.enable [
-          {
+        assertions = [
+          # In case TLS is forced to be enabled.
+          (lib.mkIf config.programs.protonvpn.enable {
             assertion =
               !(
                 config.networking.dnsService == "systemd-resolved"
                 && config.services.resolved.settings.Resolve.DNSOverTLS == true
               );
             message = "`systemd-resolved` has DNS-over-TLS enabled. ProtonVPN does not support it and will malfunction.";
-          }
+          })
+        ];
+
+        warnings = [
+          (lib.mkIf (config.networking.dnsService == "dnscrypt-proxy") ''
+            systemd-resolved may degrade the network connection due to communication issues with DNSCrypt Proxy.
+            DNS lookup and resolution may fail resulting in network failure until manual systemd-resolved service restart.
+          '')
         ];
 
         environment.systemPackages =
@@ -199,7 +208,7 @@
 
               # DNS Requirement Filters
               require_nolog = false;
-              require_dnssec = false;
+              require_dnssec = true;
               require_nofilter = false;
 
               # IPv6 Support
@@ -247,8 +256,13 @@
 
               (lib.mkIf (config.networking.dnsService == "systemd-resolved") {
                 DNS = sensitivesSecretsData.networking.${config.networking.hostName}.dns.systemd-resolved;
-                DNSOverTLS = true; # Values: `true`, `"opportunistic", or `false`.
                 CacheFromLocalhost = false;
+
+                /*
+                  `opportunistic` setting maintains compatibility with ProtonVPN as it does not support DoT.
+                   If the DNS server does not support DoT, systemd-resolved allow it to be disabled for the interface.
+                */
+                DNSOverTLS = if config.programs.protonvpn.enable then "opportunistic" else "true";
               })
             ];
           };
