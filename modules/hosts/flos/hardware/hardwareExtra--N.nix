@@ -2,7 +2,12 @@
 
 {
   flake.nixosModules.flosHardwareExtra =
-    { pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       nixpkgs.overlays = [
         # Use the exact nixpkgs revision as defined in the nix-cachyos-kernel repo to ensure binary cache hits.
@@ -81,9 +86,31 @@
             ATTR{queue/scheduler}="adios"
       '';
 
-      zramSwap = {
+      swapDevices = lib.mkIf (config.hardware.performance.swapMode == "zswap") [
+        {
+          /*
+            WARN: Do not use `/dev/disk/by-uuid/…` or `/dev/disk/by-label/…` as your swap device when using randomEncryption as the UUIDs
+              and labels will get erased on every boot when the partition is encrypted.
+            Best to use `/dev/disk/by-partuuid/…`.
+          */
+
+          device = "/dev/disk/by-partuuid/fa0202cf-d4a9-4be5-820b-6c8932b90981"; # 8GiB linuxswap - WALRAM 1TB SATA 3 SSD
+          options = [
+            "defaults"
+            "discard"
+          ];
+
+          # See: https://wiki.nixos.org/wiki/Swap#Encrypt_swap_with_random_key
+          randomEncryption = {
+            enable = true;
+            allowDiscards = true; # Allow TRIM requests for less SSD wear. Has security implications. See linked doc for more info.
+          };
+        }
+      ];
+
+      zramSwap = lib.mkIf (config.hardware.performance.swapMode == "zram") {
         # More on "/modules/performance--N.nix".
-        writebackDevice = "/dev/disk/by-uuid/9dd6f2a2-79c1-4365-9b82-48398f48bcc0"; # 8GiB linuxswap - WALRAM 1TB SATA 3 SSD
+        writebackDevice = "/dev/disk/by-partuuid/fa0202cf-d4a9-4be5-820b-6c8932b90981"; # 8GiB linuxswap - WALRAM 1TB SATA 3 SSD
       };
     };
 }

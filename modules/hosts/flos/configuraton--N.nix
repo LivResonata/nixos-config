@@ -92,6 +92,7 @@
       services.pipewire.virtSurround.enable = true;
       virtualisation.features.waydroid.enable = false;
       ## Strings and Other Types
+      hardware.performance.swapMode = "zswap";
       programs.niri.package = lib.mkForce pkgs.niri_git; # Provided from Chaotic-Nyx.
       hardware.drawingTablet.platform = "opentabletdriver";
 
