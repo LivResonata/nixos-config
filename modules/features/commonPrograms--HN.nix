@@ -181,7 +181,7 @@
 
         nh = {
           enable = true;
-          flake = "/etc/nixos"; # Implicit symlink to userland git folder for `LivResonata/nixos-config`
+          flake = "/etc/nixos"; # Imperative symlink to userland git folder for `LivResonata/nixos-config`
 
           clean = {
             enable = true;

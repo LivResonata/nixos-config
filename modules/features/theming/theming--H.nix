@@ -74,21 +74,21 @@
           zed.enable = false;
 
           ## Zen Browser
-          ### Requires declarative profiles; else will conflict with implicit `profiles.ini`
+          ### Requires declarative profiles; else will conflict with imperative `profiles.ini`
           zen-browser.enable = false;
         };
       };
 
       # XDG - Local-Share Dotfiles
       xdg.configFile = lib.mkIf config.stylix.enable {
-        # Prioritize rebuilds by overwriting implicit configs by KDE Plasma or GTK Theming.
+        # Prioritize rebuilds by overwriting imperative configs by KDE Plasma or GTK Theming.
         "gtk-3.0/gtk.css".force = true;
         "gtk-3.0/settings.ini".force = true;
         "gtk-4.0/gtk.css".force = true;
         "gtk-4.0/settings.ini".force = true;
       };
 
-      # Continuation of prioritizing rebuilds over implicit configs along with GTK3/4 via XDG configFile force.
+      # Continuation of prioritizing rebuilds over imperative configs along with GTK3/4 via XDG configFile force.
       gtk.gtk2.force = if config.stylix.enable then true else false;
     };
 }

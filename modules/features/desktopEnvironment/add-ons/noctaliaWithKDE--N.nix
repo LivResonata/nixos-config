@@ -89,7 +89,7 @@
               gnome-themes-extra
 
               ### Qt5, Qt6, and KDE Theming
-              qtengine # Use implicit per-user `/home/$USER/.config/qtengine/config.json` than `programs.qtengine` system-wide for Noctalia.
+              qtengine # Use imperative per-user `/home/$USER/.config/qtengine/config.json` than `programs.qtengine` system-wide for Noctalia.
               breeze-cursor-default-theme
               ## KColorScheme and Dolphin Noctalia dependency; Contains CLI binaries for theming; and
               ## `xembedsniproxy`, for System Tray Icons from Wine. Provided by `pkgs.kdePackages.plasma-workspace`.

@@ -88,7 +88,7 @@
         steam = {
           enable = true;
           extest.enable = true;
-          protontricks.enable = false; # Use Flatpak version and implicitly add folder permissions.
+          protontricks.enable = false; # Use Flatpak version and imperatively add folder permissions.
           remotePlay.openFirewall = true; # Steam Remote Play
           dedicatedServer.openFirewall = true; # Source Dedicated Server
           localNetworkGameTransfers.openFirewall = true; # Steam Local Network Game Transfers
