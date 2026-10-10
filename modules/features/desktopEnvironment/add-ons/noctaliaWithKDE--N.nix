@@ -41,10 +41,6 @@
         };
       };
 
-      imports = [
-        inputs.qtengine.nixosModules.default
-      ];
-
       config = {
         environment = {
           pathsToLink = [
@@ -56,7 +52,6 @@
             {
               "QT_QPA_PLATFORM" = "wayland;xkb";
 
-              # When not using `programs.qtengine`, setting these manually instead.
               "QT_QPA_PLATFORMTHEME" = "qtengine";
               "QT_QPA_PLATFORMTHEME_QT6" = "qtengine";
             }
@@ -89,7 +84,7 @@
               gnome-themes-extra
 
               ### Qt5, Qt6, and KDE Theming
-              qtengine # Use imperative per-user `/home/$USER/.config/qtengine/config.json` than `programs.qtengine` system-wide for Noctalia.
+              qtengine # Use imperative per-user `/home/$USER/.config/qtengine/config.json`.
               breeze-cursor-default-theme
               ## KColorScheme and Dolphin Noctalia dependency; Contains CLI binaries for theming; and
               ## `xembedsniproxy`, for System Tray Icons from Wine. Provided by `pkgs.kdePackages.plasma-workspace`.

@@ -89,10 +89,10 @@
     preload-ng.url = "github:miguel-b-p/preload-ng";
 
     ## QtEngine - A Qt6/Qt5 platform theme using the KDE Color Scheme format
-    qtengine = {
-      url = "github:kossLAN/qtengine";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # qtengine = {
+    #   url = "github:kossLAN/qtengine";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     ## sops-nix - Atomic, declarative, reproducible secrets
     sops-nix = {

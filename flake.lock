@@ -737,26 +737,6 @@
         "type": "github"
       }
     },
-    "qtengine": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1790355032,
-        "narHash": "sha256-9nhKFJ9AUxIS7wZ3be7Vxy36Q+4lgihB/RLooJ41niE=",
-        "owner": "kossLAN",
-        "repo": "qtengine",
-        "rev": "167e7d9a27cdc8005ef2bd4d5d317b9da01b853f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kossLAN",
-        "repo": "qtengine",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "chaotic": "chaotic",
@@ -771,7 +751,6 @@
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
         "preload-ng": "preload-ng",
-        "qtengine": "qtengine",
         "sensitivesSecrets": "sensitivesSecrets",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
