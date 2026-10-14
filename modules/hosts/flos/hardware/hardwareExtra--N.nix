@@ -65,7 +65,12 @@
         };
 
         "/media/Iris" = {
-          options = [ "noatime" ];
+          options = [
+            "noatime"
+
+            # TODO: Temporary Code. Remove when done.
+            "nofail"
+          ];
         };
       };
 
