@@ -57,12 +57,13 @@
               ## The latter can be found in the url: `https://addons.mozilla.org/en-US/firefox/addon/<extension-name>/`
               ExtensionSettings = mkExtensionSettings {
                 "uBlock0@raymondhill.net" = "ublock-origin";
-                "CanvasBlocker@kkapsner.de" = "canvasblocker";
+                "enhancerforyoutube@maximerf.addons.mozilla.org" = "enhancer-for-youtube";
                 "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
-                "{9a41dee2-b924-4161-a971-7fb35c053a4a}" = "enhanced-h264ify";
 
                 # Commented out or Disabled (Can still be installed imperatively)
-                #"firefox@betterttv.net" = "betterttv";
+                # "firefox@betterttv.net" = "betterttv";
+                # "CanvasBlocker@kkapsner.de" = "canvasblocker";
+                # "{9a41dee2-b924-4161-a971-7fb35c053a4a}" = "enhanced-h264ify";
               };
 
               # User Preferences
@@ -100,11 +101,6 @@
                 "media.hardware-video-decoding-vulkan.enabled" = {
                   Value = false;
                   Status = "user";
-                };
-                ## - Disable middle-mouse clipboard paste
-                "middlemouse.paste" = {
-                  Value = false;
-                  Status = "locked";
                 };
                 ## - Enforce DNS-over-HTTPS (DoH) | Unlocked Policy
                 ## See: https://www.librewolf.net/docs/faq/#doh-what-is-the-currently-recommended-way-to-enable-doh
@@ -152,24 +148,10 @@
                   Value = "${sensitivesSecretsData.networking.${osConfig.networking.hostName}.dns.zen-browser}";
                   Status = "locked";
                 };
-                ## - Allow websites to ask the user to receive site notifications.
-                ### 0 = Always Ask; 2 = Block
-                "permissions.default.desktop-notification" = {
-                  Value = 0;
-                  Status = "locked";
-                  Type = "number";
-                };
                 ## - Enable Enhanced Tracking Protection or Fingerprinting Protection
                 "privacy.fingerprintingProtection" = {
                   Value = true;
                   Status = "locked";
-                };
-                ## - Enable Resist Fingerprinting
-                ### Differs from `privacy.fingerprintingProtection` found in Enhanced Tracking Protection.
-                ### Can be quite disruptive for some sites.
-                "privacy.resistFingerprinting" = {
-                  Value = false;
-                  Status = "user";
                 };
                 ## - Enable Container Tabs
                 "privacy.userContext.enabled" = {
@@ -201,16 +183,46 @@
                   Value = true;
                   Status = "locked";
                 };
-                ## - Enable custom gradient HEX color menu
-                "zen.theme.gradient.show-custom-colors" = {
-                  Value = false;
-                  Status = "user";
-                };
-                ## - Display Enhanced Tracking Protection icon in the URL bar
-                "zen.urlbar.show-protections-icon" = {
-                  Value = true;
-                  Status = "locked";
-                };
+
+                /*
+                  Disallowed Preferences for Stability Reasons
+                    As of Firefox 157.x and Zen Browser 1.23.7b.
+
+                  Will be found in `About Policies > Errors` with
+                    "Unable to set preference <perf>. Preference not allowed for stability reasons."
+                  These shall be kept in code as archival. May be removed or shortened at any time if required.
+                */
+                ## Mozilla Firefox
+                ### - Disable middle-mouse clipboard paste
+                # "middlemouse.paste" = {
+                #   Value = false;
+                #   Status = "locked";
+                # };
+                ### - Allow websites to ask the user to receive site notifications.
+                ### 0 = Always Ask; 2 = Block
+                # "permissions.default.desktop-notification" = {
+                #   Value = 0;
+                #   Status = "locked";
+                #   Type = "number";
+                # };
+                ### - Enable Resist Fingerprinting
+                ### Differs from `privacy.fingerprintingProtection` found in Enhanced Tracking Protection.
+                ### Can be quite disruptive for some sites.
+                # "privacy.resistFingerprinting" = {
+                #   Value = false;
+                #   Status = "user";
+                # };
+                ## Zen Browser
+                ### - Enable custom gradient HEX color menu
+                # "zen.theme.gradient.show-custom-colors" = {
+                #   Value = false;
+                #   Status = "user";
+                # };
+                ### - Display Enhanced Tracking Protection icon in the URL bar
+                # "zen.urlbar.show-protections-icon" = {
+                #   Value = true;
+                #   Status = "locked";
+                # };
               };
             };
         };
