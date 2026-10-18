@@ -774,10 +774,10 @@
     "sensitivesSecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1791964174,
-        "narHash": "sha256-NV5w1KZqmmtG1bTBur4SLjt/MIiQPbCtmxqQukNZuC8=",
+        "lastModified": 1792345760,
+        "narHash": "sha256-UxcLMhSy05Ntc4MC6uNmYapZXsdtLYQP7vCvCQNA8ls=",
         "ref": "main",
-        "rev": "65491c53d34a5c2ccc3dff603d62d3a146e8111e",
+        "rev": "364d15574fa3728e51b005b4511d4d05c6abd5d7",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/LivResonata/nixos-secrets.git"
