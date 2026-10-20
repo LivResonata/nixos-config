@@ -4,16 +4,22 @@
   flake.homeModules.editor =
     { pkgs, ... }:
     {
-      home.sessionVariables = {
-        # Neovim Editor
-        ## Forgot where, but there was a mention of programs.neovim.defaultEditor not working.
-        EDITOR = "nvim";
+      home = {
+        packages = with pkgs; [
+          helix
+        ];
+
+        sessionVariables = {
+          # Default CLI Editor
+          ## Set the value with the binary of the program.
+          EDITOR = "hx";
+        };
       };
 
       programs = {
         neovim = {
           enable = true;
-          defaultEditor = true;
+          defaultEditor = false;
 
           # Legacy option had `true`; New default is `false`.
           withRuby = false;
