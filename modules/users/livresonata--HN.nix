@@ -31,9 +31,8 @@
         ssh
       ];
 
-      # Non-modular Configuration
-      ## Custom module options
-      #theming.preset = "everforest-dark-medium";
+      # Custom Home Manager feature module options
+      programs.zsh.zsh-helix-mode.enable = true;
 
       ## Standard options
       home = {
