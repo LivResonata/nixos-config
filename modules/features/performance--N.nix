@@ -151,7 +151,7 @@
             };
 
             scx = {
-              enable = lib.mkDefault true;
+              enable = lib.mkDefault false;
               package = pkgs.scx.rustscheds;
               scheduler = "scx_cake";
               extraArgs = [ ];
