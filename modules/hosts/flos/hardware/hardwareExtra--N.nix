@@ -28,7 +28,9 @@
           };
         };
 
-        kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
+        # TODO: Remove vanilla Linux and restore CachyOS Kernel after github:xddxdd/nix-cachyos-kernel issue #111 is resolved.
+        # kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
+        kernelPackages = pkgs.linuxPackages_latest;
         kernelParams = [
           # RCU Lazy - Helps reducing the power usage at idle or lightly loaded systems
           ## See: https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy

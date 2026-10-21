@@ -13,7 +13,8 @@
           ignoreUserConfig = false;
           fcitx5-with-addons = pkgs.kdePackages.fcitx5-with-addons;
           addons = with pkgs; [
-            fcitx5-mozc
+            # TODO: Restore `fcitx5-mozc` once github:NixOS/nixpkgs PR #531687 is merged, solving build issue #576522.
+            # fcitx5-mozc
             fcitx5-gtk
           ];
 

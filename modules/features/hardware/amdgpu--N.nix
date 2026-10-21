@@ -72,9 +72,10 @@
             "amdgpu.dpm=1"
           ];
 
-          kernelModules = [ "zenpower" ];
-          blacklistedKernelModules = [ "k10temp" ];
-          extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+          # TODO: Restore `zenpower` once github:NixOS/nixpkgs issue #575192 is resolved.
+          # kernelModules = [ "zenpower" ];
+          # blacklistedKernelModules = [ "k10temp" ];
+          # extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
         };
 
         environment = {
