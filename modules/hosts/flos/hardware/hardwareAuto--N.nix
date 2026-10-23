@@ -51,6 +51,11 @@
           device = "/dev/disk/by-uuid/e2e4ef74-d070-4507-8bb9-3ce20a6f2860";
           fsType = "ext4";
         };
+
+        "/media/Maackia" = {
+          device = "/dev/disk/by-uuid/2e962296-bb9a-4958-9cbd-896eb742c974";
+          fsType = "ext4";
+        };
       };
 
       swapDevices = [ ];

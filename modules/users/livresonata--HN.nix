@@ -119,9 +119,9 @@
           setSessionVariables = false;
 
           # Move to external HDD for media files
-          music = if osConfig.networking.hostName == "flos" then "/media/Iris/livresonata/Music" else null;
+          music = if osConfig.networking.hostName == "flos" then "/media/Maackia/livresonata/Music" else null;
           pictures =
-            if osConfig.networking.hostName == "flos" then "/media/Iris/livresonata/Pictures" else null;
+            if osConfig.networking.hostName == "flos" then "/media/Maackia/livresonata/Pictures" else null;
         };
       };
 
