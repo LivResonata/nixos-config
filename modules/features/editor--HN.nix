@@ -122,7 +122,7 @@
     {
       programs.neovim = {
         enable = true;
-        defaultEditor = true;
+        defaultEditor = false;
 
         # Includes modified delete and yanking keybinds
         ## See: https://github.com/pazams/d-is-for-delete?tab=readme-ov-file
