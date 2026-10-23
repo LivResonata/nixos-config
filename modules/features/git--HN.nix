@@ -1,21 +1,11 @@
 { ... }:
 
 {
-  flake.nixosModules.git =
-    { pkgs, ... }:
-    {
-      programs = {
-        git = {
-          enable = true;
-          package = pkgs.gitFull;
-        };
-      };
-    };
-
   flake.homeModules.git =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
+        # Operations (ops)
         gitleaks
         pre-commit
         betterleaks
@@ -23,6 +13,8 @@
       ];
 
       programs = {
+        lazygit.enable = true;
+
         git = {
           enable = true;
           package = pkgs.gitFull;
@@ -34,4 +26,16 @@
         };
       };
     };
+
+  flake.nixosModules.git =
+    { pkgs, ... }:
+    {
+      programs = {
+        git = {
+          enable = true;
+          package = pkgs.gitFull;
+        };
+      };
+    };
+
 }
