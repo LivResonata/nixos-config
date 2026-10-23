@@ -80,6 +80,10 @@
               --no-write-info-json \
               "$@"
           '';
+
+          zsh_zprof = ''
+            time ZSH_DEBUGRC=1 zsh -i -c exit
+          '';
         }
 
         (lib.mkIf osConfig.virtualisation.waydroid.enable {
