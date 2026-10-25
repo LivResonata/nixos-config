@@ -14,6 +14,9 @@
         builtins.readFile "${sensitivesSecretsPath}/sensitives.json"
       );
 
+      # DoH seems to fail at unpredictable times. Fallback to OS DNS instead.
+      enableDNSOverHTTPS = false;
+
       firefoxPolicies =
         let
           mkExtensionSettings = builtins.mapAttrs (
@@ -72,9 +75,14 @@
           Value = false;
           Status = "locked";
         };
-        ## -  Enable developer console text box or prompt box
+        ## - Enable developer console text box or prompt box
         ## Also used alongside user stylesheets for theming.
         "devtools.chrome.enabled" = {
+          Value = true;
+          Status = "locked";
+        };
+        ## - Enable Autoscroll
+        "general.autoScroll" = {
           Value = true;
           Status = "locked";
         };
@@ -83,6 +91,16 @@
         "media.hardware-video-decoding-vulkan.enabled" = {
           Value = false;
           Status = "user";
+        };
+        ## - Either let the browser store entries or not at all when using OS DNS only.
+        "network.dnsCacheEntries" = {
+          Value = if enableDNSOverHTTPS then 1600 else 0;
+          Status = "locked";
+        };
+        ## - Set DNS cache entries to expire at set time.
+        "network.dnsCacheExpiration" = {
+          Value = if enableDNSOverHTTPS then 60 else 0;
+          Status = "locked";
         };
         ## - Enforce DNS-over-HTTPS (DoH) | Unlocked Policy
         ## See: https://www.librewolf.net/docs/faq/#doh-what-is-the-currently-recommended-way-to-enable-doh
@@ -95,9 +113,8 @@
         #### 0 = Default Off; 2 = Custom; 3 = Warn if Unavailable; 5 = Off by Choice;
         #### See: https://wiki.mozilla.org/Trusted_Recursive_Resolver#DNS-over-HTTPS_Prefs_in_Firefox
         "network.trr.mode" = {
-          # Value = if config.programs.zen-browser.policies.DNSOverHTTPS.Enabled then 3 else 5;
           Status = "user";
-          Value = 5; # DoH seems to fail at unpredictable times. Fallback to OS DNS instead.
+          Value = if enableDNSOverHTTPS then 3 else 5;
           Type = "number";
         };
         ### - Fallback DNS server (Only on Mode 1; Though, this mode as of 2026-07-24 does nothing and is reserved.)
