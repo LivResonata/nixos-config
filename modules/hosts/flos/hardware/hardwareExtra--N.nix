@@ -9,6 +9,14 @@
       ...
     }:
     {
+      nix.settings = {
+        # Explicitly declared as trusted for `nix-cachyos-kernel`. This is also in the input's flake, under `nixConfig`.
+        substituters = [ "https://cache.lantian.pub/lantian" ];
+        trusted-public-keys = [
+          "lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="
+        ];
+      };
+
       nixpkgs.overlays = [
         # Use the exact nixpkgs revision as defined in the nix-cachyos-kernel repo to ensure binary cache hits.
         inputs.nix-cachyos-kernel.overlays.pinned
@@ -28,9 +36,7 @@
           };
         };
 
-        # TODO: Remove vanilla Linux and restore CachyOS Kernel after github:xddxdd/nix-cachyos-kernel issue #111 is resolved.
-        # kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
         kernelParams = [
           # RCU Lazy - Helps reducing the power usage at idle or lightly loaded systems
           ## See: https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy

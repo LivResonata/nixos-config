@@ -16,7 +16,7 @@
         # Multimedia
         vlc
         rmpc # Requires `services.mpd.enable`.
-        # calibre # TODO: Restore `calibre` once github:NixOS/nixpkgs PR #576063 is merged, solving build issue #576442.
+        calibre
         qpwgraph
         webcamoid
 
