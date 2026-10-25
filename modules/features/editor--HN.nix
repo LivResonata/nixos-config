@@ -98,6 +98,7 @@
             nil
             nixd
             nixfmt
+            nixfmt-tree # For use in projects or use the flake formatter.
 
             # Markdown
             markdown-oxide

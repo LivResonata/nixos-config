@@ -1,7 +1,7 @@
 { ... }:
 
 # Isolated perSystem module that only deals with `perSystem.packages`.
-# Avoids conflict with `_module.args.pkgs` in "./parts.nix".
+# Avoids conflict with `_module.args.pkgs` in "./flakeParts.nix".
 {
   perSystem =
     {
@@ -9,6 +9,10 @@
       ...
     }:
     {
+      # Formatter
+      ## Would be in `./flakeParts.nix`, but `pkgs` will be in conflict.
+      formatter = pkgs.nixfmt-tree;
+
       # Overlays (Consumed)
       ## Must first be imported and overlayed in `./parts.nix`.
       packages.kcgroups = pkgs.kcgroups;
