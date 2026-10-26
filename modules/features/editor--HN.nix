@@ -4,18 +4,6 @@
   flake.homeModules.editor =
     { pkgs, ... }:
     {
-      home = {
-        packages = with pkgs; [
-          helix
-        ];
-
-        sessionVariables = {
-          # Default CLI Editor
-          ## Set the value with the binary of the program.
-          EDITOR = "hx";
-        };
-      };
-
       programs = {
         neovim = {
           enable = true;
@@ -119,8 +107,19 @@
     };
 
   flake.nixosModules.editor =
-    { ... }:
+    { pkgs, ... }:
     {
+      environment = {
+        systemPackages = with pkgs; [ helix ];
+
+        sessionVariables = {
+          # Default CLI text editor.
+          ## Set the value with the binary of the program.
+          EDITOR = "hx";
+          SUDO_EDITOR = "hx";
+        };
+      };
+      
       programs.neovim = {
         enable = true;
         defaultEditor = false;
