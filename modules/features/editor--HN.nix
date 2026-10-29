@@ -3,106 +3,113 @@
 {
   flake.homeModules.editor =
     { pkgs, ... }:
+    let
+      extraEditorPackages = with pkgs; [
+        # CSS
+        vscode-css-languageserver
+
+        # JSON
+        jq
+        vscode-json-languageserver
+
+        # Language & Grammar
+        harper
+
+        # KDL
+        kdlfmt
+
+        # Lua
+        lua-language-server
+
+        # Python3
+        ruff
+        python314
+
+        # Nix Language
+        nil
+        nixd
+        nixfmt
+        nixfmt-tree # For use in projects or use the flake formatter.
+
+        # Markdown
+        markdown-oxide
+
+        # TOML
+        tombi
+
+        # YAML
+        yamlfmt
+        yaml-language-server
+
+        # Misc
+        prettier
+        package-version-server
+      ];
+    in
     {
-      programs = {
-        neovim = {
-          enable = true;
-          defaultEditor = false;
+      home.packages =
+        with pkgs;
+        [
+          # Globally in $PATH.
+          ## Language Server Protocols
+          nil
+          nixd
+          nixfmt
+          nixfmt-tree # For use in projects or use the flake formatter.
+        ]
+        ++ [
+          # Equivalent to Home Manager programs.helix.extraPackages.
+          ## Creating it here avoids using the Home Manager module that
+          ##  will conflcit with imperative setups.
+          (pkgs.symlinkJoin {
+            name = "helix";
+            paths = [ pkgs.helix_git ];
+            preferLocalBuild = true;
+            nativeBuildInputs = [ pkgs.makeWrapper ];
+            postBuild = ''
+              wrapProgram $out/bin/hx \
+                --suffix PATH : ${lib.makeBinPath extraEditorPackages}
+            '';
+          })
+        ];
 
-          # Legacy option had `true`; New default is `false`.
-          withRuby = false;
-          withPython3 = false;
+      programs.zed-editor = {
+        enable = true;
 
-          # Includes modified delete and yanking keybinds
-          ## See: https://github.com/pazams/d-is-for-delete?tab=readme-ov-file
-          extraConfig = ''
-            syntax on
+        extensions = [
+          # Language Support (without server)
+          "kdl"
+          "lua"
+          "nix"
+          "html"
+          "toml"
+          "json5"
+          "caddyfile"
+          "dockerfile"
 
-            nnoremap <SPACE> <Nop>
-            let mapleader= " "
+          # Language Server
+          "tombi"
+          "harper"
+          "markdown-oxide"
 
-            set wrap
-            set number
-            set linebreak
-            set relativenumber
-            set mouse=
-            set tabstop=2
-            set shiftwidth=2
+          # Syntax Highlighting
+          "comment"
+          "docker-compose"
 
-            nnoremap x "_x
-            nnoremap X "_X
-            nnoremap d "_d
-            nnoremap D "_D
-            vnoremap d "_d
+          # Theming
+          "catppuccin"
+          "rose-pine-theme"
+          "catppuccin-icons"
+        ];
 
-            if has('unnamedplus')
-              set clipboard=unnamed,unnamedplus
-              nnoremap <leader>d "+d
-              nnoremap <leader>D "+D
-              vnoremap <leader>d "+d
-            else
-              set clipboard=unnamed
-              nnoremap <leader>d "*d
-              nnoremap <leader>D "*D
-              vnoremap <leader>d "*d
-            endif
-          '';
-        };
+        extraPackages = extraEditorPackages;
 
-        zed-editor = {
-          enable = true;
-
-          extensions = [
-            # Language Support (w/o Server)
-            "kdl"
-            "lua"
-            "nix"
-            "html"
-            "toml"
-            "json5"
-            "caddyfile"
-            "dockerfile"
-
-            # Language Server
-            "harper"
-            "markdown-oxide"
-
-            # Syntax Highlighting
-            "comment"
-            "docker-compose"
-
-            # Theming
-            "catppuccin"
-            "rose-pine-theme"
-            "catppuccin-icons"
-          ];
-
-          extraPackages = with pkgs; [
-            # Python3
-            ruff
-            python314
-
-            # Nix Language
-            nil
-            nixd
-            nixfmt
-            nixfmt-tree # For use in projects or use the flake formatter.
-
-            # Markdown
-            markdown-oxide
-
-            # Misc
-            prettier
-            package-version-server
-          ];
-
-          # Allow Zed to update the configuration files
-          ## Is set to `true` by default.
-          mutableUserDebug = true;
-          mutableUserTasks = true;
-          mutableUserKeymaps = true;
-          mutableUserSettings = true;
-        };
+        # Allow Zed to update the configuration files
+        ## Is set to `true` by default.
+        mutableUserDebug = true;
+        mutableUserTasks = true;
+        mutableUserKeymaps = true;
+        mutableUserSettings = true;
       };
     };
 
@@ -110,7 +117,7 @@
     { pkgs, ... }:
     {
       environment = {
-        systemPackages = with pkgs; [ helix ];
+        systemPackages = with pkgs; [ helix ]; # Use stable Helix instead of pkgs.helix_git.
 
         sessionVariables = {
           # Default CLI text editor.
@@ -119,47 +126,10 @@
           SUDO_EDITOR = "hx";
         };
       };
-      
+
       programs.neovim = {
         enable = true;
         defaultEditor = false;
-
-        # Includes modified delete and yanking keybinds
-        ## See: https://github.com/pazams/d-is-for-delete?tab=readme-ov-file
-        configure = {
-          customRC = ''
-            syntax on
-
-            nnoremap <SPACE> <Nop>
-            let mapleader= " "
-
-            set wrap
-            set number
-            set linebreak
-            set relativenumber
-            set mouse=
-            set tabstop=2
-            set shiftwidth=2
-
-            nnoremap x "_x
-            nnoremap X "_X
-            nnoremap d "_d
-            nnoremap D "_D
-            vnoremap d "_d
-
-            if has('unnamedplus')
-              set clipboard=unnamed,unnamedplus
-              nnoremap <leader>d "+d
-              nnoremap <leader>D "+D
-              vnoremap <leader>d "+d
-            else
-              set clipboard=unnamed
-              nnoremap <leader>d "*d
-              nnoremap <leader>D "*D
-              vnoremap <leader>d "*d
-            endif
-          '';
-        };
       };
     };
 }

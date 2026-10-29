@@ -8,12 +8,6 @@
         # CLI
         ffmpeg-full
 
-        # Language Server Protocol
-        nil # Nix LSP by oxalica
-        nixd # Nix LSP by nix-community
-        nixfmt
-        nixfmt-tree # For use in projects or use the flake formatter.
-
         # Multimedia
         vlc
         rmpc # Requires `services.mpd.enable`.
