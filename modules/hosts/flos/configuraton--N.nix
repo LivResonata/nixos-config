@@ -46,11 +46,11 @@
           fonts
           gaming
           git
+          keys
           networking
           performance
           samba
           shell
-          ssh
           virtualisation
         ];
       }

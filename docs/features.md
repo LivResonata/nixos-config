@@ -206,7 +206,7 @@ These are modules that are expected to be added to per-host and per-user configu
 | performance     | | | &check; |         | &check; | Contains various performance tweaks, tuning, and services. |
 | samba           | | | &check; |         |         | Contains Samba Share settings and user `guest`. |
 | shell           | | | &check; | &check; | &check; | Utilizes ZSH, Starship, and Helix Mode. |
-| ssh             | | | &check; | &check; |         | Contains SSH configurations. |
+| keys            | | | &check; | &check; |         | Contains GnuPG and SSH configurations. |
 | virtualisation  | | | &check; |         | &check; | Contains Docker, Virt-Manager, and Waydroid setups. |
 
 ### Sub-modules
