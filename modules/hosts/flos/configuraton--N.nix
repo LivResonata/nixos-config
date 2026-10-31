@@ -20,8 +20,7 @@
 
         modules = with self.nixosModules; [
           # Host Configuration
-          flosHardwareAuto
-          flosHardwareExtra
+          flosHardware
           flosConfiguration
 
           # Users
@@ -33,7 +32,7 @@
           noctaliaWithKDE # folder: desktopEnvironment/add-ons
           # gnome # folder: desktopEnvironment
           mango # folder: desktopEnvironment
-          niri # folder: desktopEnvironment
+          # niri # folder: desktopEnvironment
           # plasma # folder: desktopEnvironment
           amdgpu # folder: hardware
           antivirus

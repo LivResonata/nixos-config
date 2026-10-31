@@ -1,14 +1,19 @@
 { inputs, ... }:
 
 {
-  flake.nixosModules.flosHardwareExtra =
+  flake.nixosModules.flosHardware =
     {
       config,
       lib,
+      modulesPath,
       pkgs,
       ...
     }:
     {
+      imports = [
+        (modulesPath + "/installer/scan/not-detected.nix") # Part of auto-generation by `nixos-generate-config`.
+      ];
+
       nix.settings = {
         # Explicitly declared as trusted for `nix-cachyos-kernel`. This is also in the input's flake, under `nixConfig`.
         substituters = [ "https://cache.lantian.pub/lantian" ];
@@ -17,13 +22,26 @@
         ];
       };
 
-      nixpkgs.overlays = [
-        # Use the exact nixpkgs revision as defined in the nix-cachyos-kernel repo to ensure binary cache hits.
-        inputs.nix-cachyos-kernel.overlays.pinned
-      ];
+      nixpkgs = {
+        hostPlatform = "x86_64-linux"; # Part of auto-generation by `nixos-generate-config`. Removed `lib.mkDefault` prefix.
+
+        overlays = [
+          # Use the exact nixpkgs revision as defined in the nix-cachyos-kernel repo to ensure binary cache hits.
+          inputs.nix-cachyos-kernel.overlays.pinned
+        ];
+      };
 
       boot = {
         plymouth.enable = false;
+
+        # Part of auto-generation by `nixos-generate-config`.
+        initrd.availableKernelModules = [
+          "xhci_pci"
+          "ahci"
+          "usbhid"
+          "usb_storage"
+          "sd_mod"
+        ];
 
         loader = {
           efi.canTouchEfiVariables = true;
@@ -43,10 +61,16 @@
           "rcutree.enable_rcu_lazy=1"
         ];
 
-        kernelModules = [ "nct6683" ];
+        kernelModules = [
+          "kvm-amd" # Part of auto-generation by `nixos-generate-config`.
+          "nct6683"
+        ];
       };
 
       hardware = {
+        # Part of auto-generation by `nixos-generate-config`.
+        cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
         # For monitor control
         i2c = {
           enable = true;
@@ -59,30 +83,46 @@
             unit = "C";
 
             drives = [
-              "/dev/disk/by-path/pci-0000:12:00.1-ata-5.0" # HDD; Fujitsu MJA2250BH G2
-              "/dev/disk/by-path/pci-0000:12:00.1-ata-6.0" # SSD; WALRAM 1TB
+              "/dev/disk/by-path/pci-0000:12:00.1-ata-1" # HDD; WDC WD5000LPLX-08ZNTT0
+              "/dev/disk/by-path/pci-0000:12:00.1-ata-2" # HDD; Fujitsu MJA2250BH G2
+              "/dev/disk/by-path/pci-0000:12:00.1-ata-5" # SSD; WALRAM 1TB
             ];
           };
         };
       };
 
-      # Additional Filesystem Options (/etc/fstab)
       fileSystems = {
+        "/" = {
+          device = "/dev/disk/by-uuid/e64cca17-9b10-4143-b03f-2ca9481dfda6";
+          fsType = "ext4";
+          options = [ "noatime" ];
+        };
+
         "/home" = {
+          device = "/dev/disk/by-uuid/4527b575-dab2-4e79-bd63-fd8ab1a1da5e";
+          fsType = "ext4";
+          options = [ "noatime" ];
+        };
+
+        "/boot" = {
+          device = "/dev/disk/by-uuid/7EB7-DC17";
+          fsType = "vfat";
+          options = [
+            "fmask=0022"
+            "dmask=0022"
+          ];
+        };
+
+        "/media/Maackia" = {
+          device = "/dev/disk/by-uuid/2e962296-bb9a-4958-9cbd-896eb742c974";
+          fsType = "ext4";
           options = [ "noatime" ];
         };
 
         "/media/Iris" = {
-          options = [
-            "noatime"
-            "nofail"
-          ];
-        };
-        "/media/Maackia" = {
-          options = [
-            "noatime"
-            "nofail"
-          ];
+          device = "/dev/disk/by-uuid/e2e4ef74-d070-4507-8bb9-3ce20a6f2860";
+          fsType = "ext4";
+          options = [ "noatime" ];
         };
       };
 
@@ -114,7 +154,7 @@
           device = "/dev/disk/by-partuuid/fa0202cf-d4a9-4be5-820b-6c8932b90981"; # 8GiB linuxswap - WALRAM 1TB SATA 3 SSD
           options = [
             "defaults"
-            "discard"
+            "discard=once"
           ];
 
           # See: https://wiki.nixos.org/wiki/Swap#Encrypt_swap_with_random_key
