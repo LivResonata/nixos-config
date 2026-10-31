@@ -27,7 +27,6 @@
         git
         graphics
         inputMethod
-        keys
         shell
       ];
 
