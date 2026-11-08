@@ -181,7 +181,7 @@ These are modules that are expected to be added to per-host and per-user configu
 
 | Module Name     | Has sub-modules | Folder | NixOS | Home Manager | Has Options | Description |
 | --------------- | --------------- | ------ | ----- | ------------ | ----------- | ----------- |
-| audio           | &check; | ./audio              | &check; |         |         | Pipewire, Quantum, and VirtSurround. | 
+| audio           | &check; | ./audio              | &check; |         |         | Pipewire and VirtSurround. | 
 | niri            |         | ./desktopEnvironment | &check; |         |         | Niri, a scrolling window manager. |
 | gnome           |         | ./desktopEnvironment | &check; |         |         | GNOME Desktop with GDM. |
 | mango           |         | ./desktopEnvironment | &check; |         | &check; | Mango, a fast, feature-rich Wayland compositor built on dwl. |
@@ -215,6 +215,5 @@ These are *not* made to be added to configurations. However, these are auto-impo
 
 | Module Name    | Parent Module | Folder               | NixOS   | Home Manager | Has Options | Description |
 | ---------------| ------------- | -------------------- | --------| ------------ | ----------- | ----------- |
-| quantum        | audio         | ./audio              | &check; |         |         | Pipewire quantum parameters. |
 | virtSurround   | audio         | ./audio/virtSurround | &check; |         | &check; | Pipewire virtual surround via SADIE KU-100 spatializer. |
 | themingPresets | theming       | ./theming            |         | &check; | &check; | Contains custom preset themes for Stylix. |
