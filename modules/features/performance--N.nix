@@ -150,11 +150,14 @@
               usePrecompiled = true;
             };
 
-            scx = {
+            scx-loader = {
               enable = lib.mkDefault false;
-              package = pkgs.scx.rustscheds;
-              scheduler = "scx_cake";
-              extraArgs = [ ];
+              schedsPackages = [ pkgs.scx.rustscheds ];
+
+              config = {
+                default_sched = "scx_cake";
+                default_mode = "Auto";
+              };
             };
           };
 
