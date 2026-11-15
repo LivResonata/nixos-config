@@ -84,7 +84,7 @@
         ## - Enable Autoscroll
         "general.autoScroll" = {
           Value = true;
-          Status = "locked";
+          Status = "user";
         };
         ## - Enable Vulkan Video Decoding
         ## May not utilize HW decoding at all despite Vulkan decoding being present.
