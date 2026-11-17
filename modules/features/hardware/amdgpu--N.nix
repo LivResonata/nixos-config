@@ -85,18 +85,22 @@
             nvtopPackages.amd
           ];
 
-          sessionVariables = {
-            # AMD RADV Vulkan
-            ## See for shader cache: https://wiki.cachyos.org/configuration/gaming/#pre-caching-shaders-with-proton-cachyos--ge-and--em
-            ##                       https://wiki.cachyos.org/configuration/gaming/#increase-maximum-shader-cache-size
-            RADV_EXPERIMENTAL = "video_decode,video_encode"; # For video acceleration
-            AMD_VULKAN_ICD = "RADV";
-            MESA_SHADER_CACHE_MAX_SIZE = "12G";
+          sessionVariables = lib.mkMerge [
+            {
+              # AMD RADV Vulkan
+              ## See for shader cache: https://wiki.cachyos.org/configuration/gaming/#pre-caching-shaders-with-proton-cachyos--ge-and--em
+              ##                       https://wiki.cachyos.org/configuration/gaming/#increase-maximum-shader-cache-size
+              RADV_EXPERIMENTAL = "video_decode,video_encode"; # For video acceleration
+              AMD_VULKAN_ICD = "RADV";
+              MESA_SHADER_CACHE_MAX_SIZE = "12G";
+            }
 
-            # For OpenCL Support
-            ## See: https://wiki.nixos.org/wiki/DaVinci_Resolve#AMD
-            RUSTICL_ENABLE = "radeonsi";
-          };
+            (lib.mkIf config.hardware.amdgpu.opencl.enable {
+              # For OpenCL Support
+              ## See: https://wiki.nixos.org/wiki/DaVinci_Resolve#AMD
+              RUSTICL_ENABLE = "radeonsi";
+            })
+          ];
         };
 
         hardware = {
@@ -104,12 +108,14 @@
             enable = true;
             enable32Bit = true;
 
-            extraPackages = with pkgs; [ mesa.opencl ];
+            extraPackages = with pkgs; [
+              (lib.mkIf config.hardware.amdgpu.opencl.enable (mesa.opencl))
+            ];
           };
 
           amdgpu = {
-            zluda.enable = true;
-            opencl.enable = true;
+            zluda.enable = lib.mkDefault false;
+            opencl.enable = lib.mkDefault false;
 
             overdrive = {
               # Double-ifs is redundant, but this is for the sake of being too careful.
